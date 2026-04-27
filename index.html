@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alper Can Karakaş</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --sidebar-bg: #f7f6f3;
+      --border: #e8e6e1;
+      --text: #1a1a18;
+      --muted: #8a8880;
+      --tag-bg: #eeecea;
+      --font-body: 'Inter', sans-serif;
+      --font-display: 'Playfair Display', serif;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    aside {
+      width: 260px;
+      min-width: 260px;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--border);
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      padding: 2.5rem 1.75rem;
+    }
+
+    .profile-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.35rem;
+    }
+
+    .profile-role {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 1.5rem 0;
+    }
+
+    .info-block { margin-bottom: 1.75rem; }
+
+    .info-label {
+      font-size: 0.65rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+
+    .info-val {
+      font-size: 0.8rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .info-val a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.15s;
+    }
+
+    .info-val a:hover { border-color: var(--text); }
+
+    nav { margin-top: auto; padding-top: 2rem; }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.15s;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-family: var(--font-body);
+    }
+
+    .nav-item:hover, .nav-item.active { color: var(--text); }
+    .nav-item.active { font-weight: 500; }
+
+    .nav-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+
+    .nav-item.active .nav-dot,
+    .nav-item:hover .nav-dot { background: var(--text); }
+
+    main {
+      margin-left: 260px;
+      flex: 1;
+      padding: 3rem 3.5rem;
+      max-width: 1060px;
+    }
+
+    .section { display: none; }
+    .section.active { display: block; }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      border: 1px solid var(--border);
+    }
+
+    .project-card {
+      background: var(--bg);
+      padding: 2rem 2.25rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    .project-card:last-child { border-bottom: none; }
+    .project-card:hover { background: #fafaf8; }
+
+    .project-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    .project-badge {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+
+    .project-badge.live {
+      border-color: #b8d4a8;
+      color: #4a7c35;
+      background: #f2f8ee;
+    }
+
+    .project-badge.wip {
+      border-color: #b8cce8;
+      color: #2d5a8e;
+      background: #eef3fa;
+    }
+
+    .project-body {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .project-content { flex: 1; min-width: 0; }
+
+    .project-thumb {
+      width: 240px;
+      min-width: 240px;
+      height: 155px;
+      border: 1px dashed var(--border);
+      background: var(--sidebar-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .project-thumb img,
+    .project-thumb video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .tag {
+      font-size: 0.68rem;
+      color: var(--muted);
+      background: var(--tag-bg);
+      padding: 0.2rem 0.55rem;
+      letter-spacing: 0.03em;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 1px;
+      margin-top: 1.25rem;
+      transition: opacity 0.15s;
+    }
+
+    .project-link:hover { opacity: 0.5; }
+
+    .about-text {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 580px;
+    }
+
+    .about-text p + p { margin-top: 1.25rem; }
+    .about-text strong { color: var(--text); font-weight: 500; }
+
+    .exp-card {
+      border: 1px solid var(--border);
+      padding: 1.5rem 1.75rem;
+      margin-top: 2rem;
+    }
+
+    .exp-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-company {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 400;
+    }
+
+    .exp-date {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .exp-role {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+
+    .exp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .exp-list li {
+      font-size: 0.81rem;
+      color: var(--muted);
+      line-height: 1.65;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .exp-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--border);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      border: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+
+    .skill-cell {
+      padding: 1rem 1.25rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-cell:nth-last-child(-n+2) { border-bottom: none; }
+
+    .skill-cell-label {
+      font-size: 0.65rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-cell-val {
+      font-size: 0.82rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      border: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.25rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.15s;
+      gap: 1.5rem;
+    }
+
+    .contact-row:last-child { border-bottom: none; }
+    .contact-row:hover { background: #fafaf8; }
+
+    .contact-row-label {
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      width: 70px;
+      flex-shrink: 0;
+    }
+
+    .contact-row-val { font-size: 0.85rem; }
+
+    @media (max-width: 700px) {
+      aside { display: none; }
+      main { margin-left: 0; padding: 2rem 1.5rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<aside>
+  <div class="profile-name">Alper Can<br>Karakaş</div>
+  <div class="profile-role">dev</div>
+
+  <div class="info-block">
+    <div class="info-label">Education</div>
+    <div class="info-val">B.Sc. Computer Engineering<br> </div>
+  </div>
+  <div class="info-block">
+    <div class="info-label">Email</div>
+    <div class="info-val"><a href="mailto:alper.can.karakas@hotmail.com">alper.can.karakas@hotmail.com</a></div>
+  </div>
+  <div class="info-block">
+    <div class="info-label">GitHub</div>
+    <div class="info-val"><a href="https://github.com/alpercankarakas1" target="_blank">github.com/alpercankarakas1</a></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <nav>
+    <button class="nav-item active" onclick="show('games', this)">
+      <span class="nav-dot"></span> Games
+    </button>
+    <button class="nav-item" onclick="show('contact', this)">
+      <span class="nav-dot"></span> Contact
+    </button>
+  </nav>
+</aside>
+
+<main>
+
+  <div class="section active" id="sec-games">
+    <h1 class="section-heading">Games</h1>
+    <p class="section-sub"></p>
+    <div class="project-list">
+      <div class="project-card">
+        <div class="project-top">
+          <div class="project-title">Organism</div>
+          <div class="project-badge live">Live — Magara Jam 2025</div>
+        </div>
+        <div class="project-body">
+          <div class="project-content">
+            <p class="project-desc">
+              A 2D endless tower defense built in 72 hours by a team of three. The premise is
+              deceptively simple: you control a living, procedurally growing organism — rotating it
+              to shield against incoming projectiles and hold off escalating enemy waves for as long
+              as possible. The longer you survive, the more your organism grows, and the more complex
+              the juggle becomes.<br><br>
+              Boss encounters punctuate the endless loop, forcing the player to adapt before the next
+              wave of pressure hits. The central question the game keeps asking is the same one it
+              opens with — how long can you preserve the integrity of your organism?
+            </p>
+            <div class="project-meta">
+              <div class="project-tags">
+                <span class="tag">Unity</span>
+                <span class="tag">Endless</span>
+                <span class="tag">Tower Defense</span>
+              </div>
+            </div>
+            <a href="https://magarajam.com/game/organism" target="_blank" class="project-link">Play on Magara Jam ↗</a>
+          </div>
+          <div class="project-thumb"><img src="organism_thumb.jpg" alt="Organism"></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <div class="project-title">im having trouble choosing a game name</div>
+          <div class="project-badge wip">In Development</div>
+        </div>
+        <div class="project-body">
+          <div class="project-content">
+            <p class="project-desc">
+              A 3D first-person endless roguelite built around relentless momentum — inspired by the
+              chaotic energy of Megabonk and Ultrakill. Pick a character, chain skills, and tear through escalating
+              enemy waves. Kills feed an XP pool, levels unlock power, and a boss gates every map
+              before the next one opens. The loop is tight and endless by design.<br><br>
+              Under the surface, the game runs on a stack of deliberate Unity systems: a global object
+              pool drives every XP orb, enemy, and projectile with zero allocation overhead, and
+              GPU-baked animations cycle enemy meshes through looped frames — keeping draw calls low
+              while dozens of entities flood the screen simultaneously.<br><br>
+              2 months was spent on the development process.
+            </p>
+            <div class="project-meta">
+              <div class="project-tags">
+                <span class="tag">Unity</span>
+                <span class="tag">FPS</span>
+                <span class="tag">Roguelite</span>
+                <span class="tag">Endless</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-thumb"><img src="enterprojectname.gif" alt="Project"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-contact">
+    <h1 class="section-heading">Contact</h1>
+    <p class="section-sub">Feel free to reach out for collaborations, opportunities, or just to talk games.</p>
+    <div class="contact-list">
+      <a href="mailto:alper.can.karakas@hotmail.com" class="contact-row">
+        <span class="contact-row-label">Email</span>
+        <span class="contact-row-val">alper.can.karakas@hotmail.com</span>
+      </a>
+      <a href="https://github.com/alpercankarakas1" target="_blank" class="contact-row">
+        <span class="contact-row-label">GitHub</span>
+        <span class="contact-row-val">github.com/alpercankarakas1</span>
+      </a>
+      <a href="tel:+905377215978" class="contact-row">
+        <span class="contact-row-label">Phone</span>
+        <span class="contact-row-val">+90 537 721 59 78</span>
+      </a>
+      <div class="contact-row">
+        <span class="contact-row-label">Location</span>
+        <span class="contact-row-val">Karabük, Turkey</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  function show(tab, el) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('sec-' + tab).classList.add('active');
+    el.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
