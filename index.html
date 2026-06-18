@@ -7,7 +7,7 @@
   <title>Alper Can Karakaş</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet">
   <style>
     *,
@@ -19,14 +19,19 @@
     }
 
     :root {
-      --bg: #ffffff;
-      --sidebar-bg: #f7f6f3;
-      --border: #e8e6e1;
-      --text: #1a1a18;
-      --muted: #8a8880;
-      --tag-bg: #eeecea;
+      --bg: #1a1917;
+      --sidebar-bg: #201f1c;
+      --border: #34322d;
+      --text: #ece9e2;
+      --muted: #93908a;
+      --tag-bg: #2a2823;
+      --hover: #242220;
       --font-body: 'Inter', sans-serif;
-      --font-display: 'Playfair Display', serif;
+      --font-display: 'Space Grotesk', sans-serif;
+    }
+
+    html {
+      font-size: 17.5px;
     }
 
     html,
@@ -72,6 +77,37 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       margin-bottom: 2rem;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      align-self: flex-start;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+
+    .lang-toggle button {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      padding: 0.32rem 0.7rem;
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .lang-toggle button + button {
+      border-left: 1px solid var(--border);
+    }
+
+    .lang-toggle button.active {
+      background: var(--tag-bg);
+      color: var(--text);
     }
 
     .divider {
@@ -158,7 +194,6 @@
       margin-left: 260px;
       flex: 1;
       padding: 3rem 3.5rem;
-      max-width: 1060px;
     }
 
     .section {
@@ -184,41 +219,61 @@
       line-height: 1.6;
     }
 
-    .project-list {
+    .games-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.75rem;
+      justify-content: center;
+    }
+
+    .game-card {
+      border: 1px solid var(--border);
+      background: var(--sidebar-bg);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      gap: 1px;
-      border: 1px solid var(--border);
+      flex: 1 1 calc((100% - 3.5rem) / 3);
+      max-width: 480px;
     }
 
-    .project-card {
+    .game-card-image {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
       background: var(--bg);
-      padding: 2rem 2.25rem;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.15s;
     }
 
-    .project-card:last-child {
-      border-bottom: none;
+    .game-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    .project-card:hover {
-      background: #fafaf8;
+    .game-card-status {
+      position: absolute;
+      top: 0.65rem;
+      right: 0.65rem;
+      z-index: 2;
     }
 
-    .project-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .project-title {
+    .game-card-title {
+      text-align: center;
       font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 400;
-      letter-spacing: -0.01em;
+      font-size: 1.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin: 0.9rem 0 0.85rem;
+    }
+
+    .game-card-body {
+      padding: 1.1rem 1.25rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .project-badge {
@@ -230,81 +285,148 @@
       color: var(--muted);
       white-space: nowrap;
       flex-shrink: 0;
-      margin-top: 0.2rem;
+      background: rgba(26, 25, 23, 0.85);
     }
 
     .project-badge.live {
-      border-color: #b8d4a8;
-      color: #4a7c35;
-      background: #f2f8ee;
+      border-color: #3c6b34;
+      color: #8fd66a;
+      background: rgba(28, 40, 24, 0.9);
     }
 
     .project-badge.wip {
-      border-color: #b8cce8;
-      color: #2d5a8e;
-      background: #eef3fa;
+      border-color: #2f5a82;
+      color: #7fb3f0;
+      background: rgba(24, 34, 51, 0.9);
     }
 
-    .project-body {
+    .project-badge.alpha {
+      border-color: #5a4a2a;
+      color: #e8c98a;
+      background: rgba(47, 39, 24, 0.9);
+    }
+
+    .game-gallery {
+      margin-top: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .gallery-viewport {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .gallery-track {
       display: flex;
-      gap: 2rem;
-      align-items: flex-start;
+      height: 100%;
+      transition: transform 0.3s ease;
     }
 
-    .project-content {
-      flex: 1;
-      min-width: 0;
+    .gallery-track img {
+      height: 100%;
+      object-fit: var(--fit, cover);
+      object-position: var(--pos, center);
+      display: block;
+      flex-shrink: 0;
     }
 
-    .project-thumb {
-      width: 240px;
-      min-width: 240px;
-      height: 155px;
-      border: 1px dashed var(--border);
-      background: var(--sidebar-bg);
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      font-size: 0.85rem;
+      line-height: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.68rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-      flex-shrink: 0;
-      overflow: hidden;
+      cursor: pointer;
+      transition: background 0.15s;
+      padding: 0;
     }
 
-    .project-thumb img,
-    .project-thumb video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    .gallery-arrow:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .gallery-prev {
+      left: 4px;
+    }
+
+    .gallery-next {
+      right: 4px;
     }
 
     .project-desc {
-      font-size: 0.83rem;
-      color: var(--muted);
+      font-size: 0.88rem;
+      color: var(--text);
       line-height: 1.75;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
     }
 
-    .project-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
+    .project-desc strong {
+      color: inherit;
+      font-weight: 600;
     }
 
     .project-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
+      margin-bottom: 0.9rem;
     }
 
     .tag {
-      font-size: 0.68rem;
-      color: var(--muted);
-      background: var(--tag-bg);
-      padding: 0.2rem 0.55rem;
+      font-size: 0.65rem;
+      font-weight: 500;
+      padding: 0.22rem 0.6rem;
       letter-spacing: 0.03em;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+    }
+
+    .tag-0 {
+      background: #2c1f1f;
+      color: #e3a3a3;
+      border-color: #5a3a3a;
+    }
+
+    .tag-1 {
+      background: #1c2630;
+      color: #9cc3e8;
+      border-color: #3a4a5a;
+    }
+
+    .tag-2 {
+      background: #241c30;
+      color: #c3a3e8;
+      border-color: #4a3a5a;
+    }
+
+    .tag-3 {
+      background: #1c2f24;
+      color: #9ce8b8;
+      border-color: #3a5a45;
+    }
+
+    .tag-4 {
+      background: #2f2718;
+      color: #e8c98a;
+      border-color: #5a4a2a;
+    }
+
+    .tag-5 {
+      background: #1c2b2b;
+      color: #9cdada;
+      border-color: #3a4a4a;
     }
 
     .project-link {
@@ -316,7 +438,8 @@
       text-decoration: none;
       border-bottom: 1px solid var(--text);
       padding-bottom: 1px;
-      margin-top: 1.25rem;
+      margin-top: auto;
+      align-self: flex-start;
       transition: opacity 0.15s;
     }
 
@@ -324,107 +447,14 @@
       opacity: 0.5;
     }
 
-    .about-text {
-      font-size: 0.88rem;
+    .project-link.disabled {
       color: var(--muted);
-      line-height: 1.9;
-      max-width: 580px;
+      border-bottom-color: var(--border);
+      cursor: default;
     }
 
-    .about-text p+p {
-      margin-top: 1.25rem;
-    }
-
-    .about-text strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .exp-card {
-      border: 1px solid var(--border);
-      padding: 1.5rem 1.75rem;
-      margin-top: 2rem;
-    }
-
-    .exp-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 0.4rem;
-    }
-
-    .exp-company {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      font-weight: 400;
-    }
-
-    .exp-date {
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    .exp-role {
-      font-size: 0.72rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 1rem;
-    }
-
-    .exp-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .exp-list li {
-      font-size: 0.81rem;
-      color: var(--muted);
-      line-height: 1.65;
-      padding-left: 1rem;
-      position: relative;
-    }
-
-    .exp-list li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--border);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      border: 1px solid var(--border);
-      margin-top: 1rem;
-    }
-
-    .skill-cell {
-      padding: 1rem 1.25rem;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .skill-cell:nth-last-child(-n+2) {
-      border-bottom: none;
-    }
-
-    .skill-cell-label {
-      font-size: 0.65rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.5rem;
-    }
-
-    .skill-cell-val {
-      font-size: 0.82rem;
-      color: var(--text);
-      line-height: 1.6;
+    .project-link.disabled:hover {
+      opacity: 1;
     }
 
     .contact-list {
@@ -433,6 +463,7 @@
       gap: 1px;
       border: 1px solid var(--border);
       margin-top: 1rem;
+      max-width: 640px;
     }
 
     .contact-row {
@@ -452,7 +483,7 @@
     }
 
     .contact-row:hover {
-      background: #fafaf8;
+      background: var(--hover);
     }
 
     .contact-row-label {
@@ -466,6 +497,12 @@
 
     .contact-row-val {
       font-size: 0.85rem;
+    }
+
+    @media (max-width: 980px) {
+      .game-card {
+        flex-basis: calc((100% - 1.75rem) / 2);
+      }
     }
 
     @media (max-width: 700px) {
@@ -544,28 +581,9 @@
         font-size: 1.3rem;
       }
 
-      .project-card {
-        padding: 1.25rem 1rem;
-      }
-
-      .project-top {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .project-body {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .project-thumb {
-        width: 100%;
-        min-width: 0;
-        height: 190px;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr;
+      .game-card {
+        flex-basis: 100%;
+        max-width: 100%;
       }
     }
   </style>
@@ -574,15 +592,20 @@
 <body>
 
   <aside>
+    <div class="lang-toggle">
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+      <button data-lang="tr" onclick="setLang('tr')">TR</button>
+    </div>
+
     <div class="profile-name">Alper Can<br>Karakaş</div>
-    <div class="profile-role">dev</div>
+    <div class="profile-role" data-i18n="role">dev</div>
 
     <div class="info-block">
-      <div class="info-label">Education</div>
-      <div class="info-val">B.Sc. Computer Engineering<br> </div>
+      <div class="info-label" data-i18n="eduLabel">Education</div>
+      <div class="info-val" data-i18n="eduValue">B.Sc. Computer Engineering</div>
     </div>
     <div class="info-block">
-      <div class="info-label">Email</div>
+      <div class="info-label" data-i18n="emailLabel">Email</div>
       <div class="info-val"><a href="mailto:alper.can.karakas@hotmail.com">alper.can.karakas@hotmail.com</a></div>
     </div>
     <div class="info-block">
@@ -595,10 +618,10 @@
 
     <nav>
       <button class="nav-item active" onclick="show('games', this)">
-        <span class="nav-dot"></span> Games
+        <span class="nav-dot"></span> <span data-i18n="navGames">Games</span>
       </button>
       <button class="nav-item" onclick="show('contact', this)">
-        <span class="nav-dot"></span> Contact
+        <span class="nav-dot"></span> <span data-i18n="navContact">Contact</span>
       </button>
     </nav>
   </aside>
@@ -606,79 +629,16 @@
   <main>
 
     <div class="section active" id="sec-games">
-      <h1 class="section-heading">Games</h1>
-      <p class="section-sub"></p>
-      <div class="project-list">
-        <div class="project-card">
-          <div class="project-top">
-            <div class="project-title">Organism</div>
-            <div class="project-badge live">Live — Magara Jam 2025</div>
-          </div>
-          <div class="project-body">
-            <div class="project-content">
-              <p class="project-desc">
-                A 2D endless tower defense built in 72 hours by a team of three. The premise is
-                deceptively simple: you control a living, procedurally growing organism — rotating it
-                to shield against incoming projectiles and hold off escalating enemy waves for as long
-                as possible. The longer you survive, the more your organism grows, and the more complex
-                the juggle becomes.<br><br>
-                Boss encounters punctuate the endless loop, forcing the player to adapt before the next
-                wave of pressure hits. The central question the game keeps asking is the same one it
-                opens with — how long can you preserve the integrity of your organism?
-              </p>
-              <div class="project-meta">
-                <div class="project-tags">
-                  <span class="tag">Unity</span>
-                  <span class="tag">Endless</span>
-                  <span class="tag">Tower Defense</span>
-                </div>
-              </div>
-              <a href="https://magarajam.com/game/organism" target="_blank" class="project-link">Play on Magara Jam
-                ↗</a>
-            </div>
-            <div class="project-thumb"><img src="organism_thumb.jpg" alt="Organism"></div>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-top">
-            <div class="project-title">------</div>
-            <div class="project-badge wip">In Development</div>
-          </div>
-          <div class="project-body">
-            <div class="project-content">
-              <p class="project-desc">
-                A 3D first-person endless roguelite built around relentless momentum — inspired by the
-                chaotic energy of Megabonk and Ultrakill. Pick a character, chain skills, and tear through escalating
-                enemy waves. Kills feed an XP pool, levels unlock power, and a boss gates every map
-                before the next one opens. The loop is tight and endless by design.<br><br>
-                Under the surface, the game runs on a stack of deliberate Unity systems: a global object
-                pool drives every XP orb, enemy, and projectile with zero allocation overhead, and
-                GPU-baked animations cycle enemy meshes through looped frames — keeping draw calls low
-                while dozens of entities flood the screen simultaneously.<br><br>
-                2 months was spent on the development process.
-              </p>
-              <div class="project-meta">
-                <div class="project-tags">
-                  <span class="tag">Unity</span>
-                  <span class="tag">FPS</span>
-                  <span class="tag">Roguelite</span>
-                  <span class="tag">Endless</span>
-                </div>
-              </div>
-            </div>
-            <div class="project-thumb"><img src="enterprojectname.gif" alt="Project"></div>
-          </div>
-        </div>
-      </div>
+      <h1 class="section-heading" data-i18n="headingGames">Games</h1>
+      <div class="games-grid" id="games-grid"></div>
     </div>
 
     <div class="section" id="sec-contact">
-      <h1 class="section-heading">Contact</h1>
-      <p class="section-sub">Feel free to reach out for collaborations, opportunities, or just to talk games.</p>
+      <h1 class="section-heading" data-i18n="headingContact">Contact</h1>
+      <p class="section-sub" data-i18n="contactSub">Feel free to reach out for collaborations, opportunities, or just to talk games.</p>
       <div class="contact-list">
         <a href="mailto:alper.can.karakas@hotmail.com" class="contact-row">
-          <span class="contact-row-label">Email</span>
+          <span class="contact-row-label" data-i18n="cEmail">Email</span>
           <span class="contact-row-val">alper.can.karakas@hotmail.com</span>
         </a>
         <a href="https://github.com/alpercankarakas1" target="_blank" class="contact-row">
@@ -686,12 +646,12 @@
           <span class="contact-row-val">github.com/alpercankarakas1</span>
         </a>
         <a href="tel:+905377215978" class="contact-row">
-          <span class="contact-row-label">Phone</span>
+          <span class="contact-row-label" data-i18n="cPhone">Phone</span>
           <span class="contact-row-val">+90 537 721 59 78</span>
         </a>
         <div class="contact-row">
-          <span class="contact-row-label">Location</span>
-          <span class="contact-row-val">Karabük, Turkey</span>
+          <span class="contact-row-label" data-i18n="cLocation">Location</span>
+          <span class="contact-row-val" data-i18n="locationValue">Karabük, Turkey</span>
         </div>
       </div>
     </div>
@@ -705,6 +665,215 @@
       document.getElementById('sec-' + tab).classList.add('active');
       el.classList.add('active');
     }
+
+    const i18n = {
+      en: {
+        role: 'dev',
+        eduLabel: 'Education',
+        eduValue: 'B.Sc. Computer Engineering',
+        emailLabel: 'Email',
+        navGames: 'Games',
+        navContact: 'Contact',
+        headingGames: 'Games',
+        headingContact: 'Contact',
+        contactSub: 'Feel free to reach out for collaborations, opportunities, or just to talk games.',
+        cEmail: 'Email',
+        cPhone: 'Phone',
+        cLocation: 'Location',
+        locationValue: 'Karabük, Turkey',
+        alphaTooltip: 'Currently in closed alpha'
+      },
+      tr: {
+        role: 'geliştirici',
+        eduLabel: 'Eğitim',
+        eduValue: 'Bilgisayar Mühendisliği',
+        emailLabel: 'E-posta',
+        navGames: 'Oyunlar',
+        navContact: 'İletişim',
+        headingGames: 'Oyunlar',
+        headingContact: 'İletişim',
+        contactSub: 'İş birlikleri, fırsatlar ya da sadece oyunlardan konuşmak için bana ulaşabilirsiniz.',
+        cEmail: 'E-posta',
+        cPhone: 'Telefon',
+        cLocation: 'Konum',
+        locationValue: 'Karabük, Türkiye',
+        alphaTooltip: 'Şu anda kapalı alpha testinde'
+      }
+    };
+
+    const games = [
+      {
+        id: 'sticksort',
+        title: 'Stick Sort',
+        badge: 'alpha',
+        badgeText: {
+          en: 'Closed Alpha — Google Play',
+          tr: 'Kapalı Alpha — Google Play'
+        },
+        thumb: 'stick_sort_thumb.png',
+        gallery: ['stick_sort_mobile_1.png', 'stick_sort_mobile_2.png', 'stick_sort_mobile_3.png'],
+        galleryAspect: '16 / 9',
+        galleryFit: 'contain',
+        desc: {
+          en: `The <strong>first game I ever published</strong> — a chill drag-and-drop sorting
+            puzzle, published solo from scratch under my own little label, <strong>Ande Games</strong>.
+            It looks simple, but I built the whole thing front to back: the gameplay and level flow,
+            a <strong>custom in-editor level generator</strong>, smooth <strong>DOTween animations</strong>,
+            plus <strong>Firebase analytics</strong>, <strong>crash reporting</strong>, and
+            <strong>AdMob ads</strong> wired in. Taking something from an empty project all the way to
+            a real store page taught me more than any tutorial ever did.`,
+          tr: `<strong>Yayınladığım ilk oyun</strong> — sürükle-bırak mantığıyla oynanan sakin bir
+            sıralama bulmacası; kendi küçük etiketim <strong>Ande Games</strong> altında, sıfırdan ve
+            tek başıma yayınladım. Basit görünüyor ama her şeyini baştan sona ben kurdum: oynanış ve
+            bölüm akışı, <strong>editör içi özel bölüm üreteci</strong>, akıcı
+            <strong>DOTween animasyonları</strong>, ayrıca <strong>Firebase analizleri</strong>,
+            <strong>çökme raporlama</strong> ve entegre <strong>AdMob reklamları</strong>. Boş bir
+            projeyi gerçek bir mağaza sayfasına taşımak bana hiçbir eğitimin öğretemeyeceği kadar çok
+            şey öğretti.`
+        },
+        tags: ['Unity', 'Firebase', 'AdMob', 'DOTween', 'Custom Editor Tools'],
+        link: {
+          text: { en: 'Play on Google Play ↗', tr: "Google Play'de Oyna ↗" },
+          disabled: true
+        }
+      },
+      {
+        id: 'organism',
+        title: 'Organism',
+        badge: 'live',
+        badgeText: {
+          en: 'Live — Magara Jam 2025',
+          tr: 'Yayında — Magara Jam 2025'
+        },
+        thumb: 'organism_thumb.jpg',
+        gallery: ['organism_ss1.png', 'organism_ss2.png'],
+        galleryAspect: '16 / 9',
+        desc: {
+          en: `A <strong>2D tower-defense</strong> with a twist: instead of placing towers, you
+            rotate a living, <strong>procedurally growing organism</strong> to intercept projectiles
+            and survive wave after wave of enemies. Built in just <strong>72 hours</strong> with two
+            friends for <strong>Magara Jam 2025</strong>, where it landed in the
+            <strong>Top 50 out of 500+ entries</strong> — easily one of the most intense and fun
+            things I've worked on. Above all, it's where I learned I could take an idea and actually
+            ship a finished product.`,
+          tr: `Bir tür <strong>2D kule savunması</strong>, ama farklı bir bakışla: kule yerleştirmek
+            yerine, canlı ve <strong>prosedürel olarak büyüyen bir organizmayı</strong> döndürerek
+            mermileri karşılıyor ve dalga dalga gelen düşmanlara karşı ayakta kalmaya çalışıyorsun.
+            İki arkadaşımla yalnızca <strong>72 saatte</strong>, <strong>Magara Jam 2025</strong> için
+            yaptık ve <strong>500+ yapım arasında ilk 50'ye</strong> girdi — üzerinde çalıştığım en
+            yoğun ve eğlenceli işlerden biri. Her şeyden önemlisi, bir fikri alıp gerçekten bitmiş bir
+            ürüne dönüştürebildiğimi bu etkinlikte öğrendim.`
+        },
+        tags: ['Unity', 'C#', 'Game Jam'],
+        link: {
+          url: 'https://magarajam.com/game/organism',
+          text: { en: 'Play on Magara Jam ↗', tr: "Magara Jam'de Oyna ↗" }
+        }
+      },
+      {
+        id: 'megakill',
+        title: 'Megakill',
+        badge: 'wip',
+        badgeText: {
+          en: 'In Development',
+          tr: 'Geliştirme Aşamasında'
+        },
+        thumb: 'enterprojectname.gif',
+        desc: {
+          en: `A fast <strong>3D first-person roguelite</strong> that's all about momentum. Pick a
+            character, stack up skills, and blast through endless enemy waves until a boss blocks your
+            way to the next map. The deeper systems are where the fun was for me —
+            <strong>object pooling</strong> everything so the screen can fill up with enemies without
+            a single hitch, and <strong>GPU-baked animations</strong> to keep it buttery smooth.`,
+          tr: `Tamamen tempo üzerine kurulu, hızlı bir <strong>3D birinci şahıs roguelite</strong>.
+            Bir karakter seç, yetenekleri üst üste yığ ve bir boss seni durdurana kadar sonsuz düşman
+            dalgalarını biç. Asıl eğlence benim için derindeki sistemlerdeydi — ekran tek bir takılma
+            olmadan düşmanlarla dolabilsin diye her şeyi <strong>object pooling</strong> ile yönettim
+            ve akıcılığı korumak için <strong>GPU'da pişirilmiş animasyonlar</strong> kullandım.`
+        },
+        tags: ['Unity', 'C#', 'Object Pooling', 'GPU-Baked Animations'],
+        link: null
+      }
+    ];
+
+    let lang = localStorage.getItem('lang') || 'en';
+
+    function setLang(l) {
+      lang = l;
+      localStorage.setItem('lang', l);
+      applyLang();
+    }
+
+    function applyLang() {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (i18n[lang][key] !== undefined) el.textContent = i18n[lang][key];
+      });
+      document.querySelectorAll('.lang-toggle button').forEach(b => {
+        b.classList.toggle('active', b.dataset.lang === lang);
+      });
+      renderGames();
+    }
+
+    const galleryState = {};
+
+    function galleryNav(id, dir) {
+      const g = games.find(x => x.id === id);
+      if (!g || !g.gallery) return;
+      const count = g.gallery.length;
+      const max = count - 1;
+      let idx = galleryState[id] || 0;
+      idx = Math.max(0, Math.min(max, idx + dir));
+      galleryState[id] = idx;
+      const track = document.getElementById('gallery-track-' + id);
+      if (track) track.style.transform = `translateX(-${idx * (100 / count)}%)`;
+      const prevBtn = document.getElementById('gallery-prev-' + id);
+      const nextBtn = document.getElementById('gallery-next-' + id);
+      if (prevBtn) prevBtn.style.display = idx === 0 ? 'none' : 'flex';
+      if (nextBtn) nextBtn.style.display = idx === max ? 'none' : 'flex';
+    }
+
+    function renderGames() {
+      const grid = document.getElementById('games-grid');
+      grid.innerHTML = games.map(g => {
+        const count = g.gallery ? g.gallery.length : 0;
+        const gallery = count
+          ? `<div class="game-gallery">
+              <div class="gallery-viewport" style="aspect-ratio:${g.galleryAspect || '16 / 9'}">
+                <div class="gallery-track" id="gallery-track-${g.id}" style="width:${count * 100}%">
+                  ${g.gallery.map(src => `<img src="${src}" style="flex:0 0 ${100 / count}%;--fit:${g.galleryFit || 'cover'};--pos:${g.galleryPos || 'center'}" alt="${g.title} screenshot">`).join('')}
+                </div>
+                ${count > 1 ? `
+                  <button class="gallery-arrow gallery-prev" id="gallery-prev-${g.id}" style="display:none" onclick="galleryNav('${g.id}', -1)">‹</button>
+                  <button class="gallery-arrow gallery-next" id="gallery-next-${g.id}" onclick="galleryNav('${g.id}', 1)">›</button>
+                ` : ''}
+              </div>
+             </div>`
+          : '';
+        return `
+        <div class="game-card">
+          <div class="game-card-image">
+            <img src="${g.thumb}" alt="${g.title}">
+            <div class="game-card-status project-badge ${g.badge}">${g.badgeText[lang]}</div>
+          </div>
+          <div class="game-card-body">
+            <div class="project-tags">${g.tags.map((t, i) => `<span class="tag tag-${i % 6}">${t}</span>`).join('')}</div>
+            <div class="game-card-title" lang="en">${g.title}</div>
+            <p class="project-desc">${g.desc[lang]}</p>
+            ${gallery}
+            ${g.link
+              ? (g.link.disabled
+                ? `<span class="project-link disabled" title="${i18n[lang].alphaTooltip}">${g.link.text[lang]}</span>`
+                : `<a href="${g.link.url}" target="_blank" class="project-link">${g.link.text[lang]}</a>`)
+              : ''}
+          </div>
+        </div>
+      `;
+      }).join('');
+    }
+
+    applyLang();
   </script>
 
 </body>
