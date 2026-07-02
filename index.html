@@ -703,38 +703,74 @@
 
     const games = [
       {
-        id: 'sticksort',
-        title: 'Stick Sort',
+        id: 'balloonsort',
+        title: 'Balloon Sort',
         badge: 'alpha',
         badgeText: {
-          en: 'Closed Alpha — Google Play',
-          tr: 'Kapalı Alpha — Google Play'
+          en: 'Closed Alpha · Google Play',
+          tr: 'Kapalı Alpha · Google Play'
+        },
+        thumb: 'BalloonSortIcon.png',
+        gallery: [
+          'BalloonSort_876x1557_2026-06-30_18-43-06.png',
+          'BalloonSort_876x1557_2026-06-30_18-44-04.png',
+          'BalloonSort_876x1557_2026-06-30_18-46-03.png',
+          'BalloonSort_876x1557_2026-06-30_18-48-02.png'
+        ],
+        galleryAspect: '16 / 9',
+        galleryFit: 'contain',
+        desc: {
+          en: `My <strong>second game</strong> under my own indie label, <strong>Ande Games</strong>.
+            It's a simple, easy-to-play balloon sorting puzzle inspired by <strong>water sort</strong>
+            style games. Honestly, the whole reason I made it was to chase down one question: could I
+            bring something a little different to all those water sort games I kept running into? I
+            went with a balloon theme because it felt like the most natural and visually pleasing way
+            to show off the drag-and-drop mechanic. Right now it's in
+            <strong>closed testing on Google Play</strong>.`,
+          tr: `İndie ismim <strong>Ande Games</strong> altındaki <strong>ikinci oyunum</strong>.
+            <strong>Water sort</strong> tarzı oyunlardan esinlendiğim, oynanması basit bir balon
+            sıralama oyunu. Açıkçası bu oyunu yapma sebebim, etrafta gördüğüm bunca su sıralama
+            oyununa bir fark katabilir miyim sorusuna cevap aramaktı. Sürükle bırak mekaniğini en
+            doğal ve görsel olarak en güzel şekilde yansıtmak için de balon temasını uygun buldum. Şu
+            anda <strong>Google Play üzerinde kapalı test aşamasında</strong>.`
+        },
+        tags: ['Unity', 'Firebase', 'AdMob', 'DOTween'],
+        link: {
+          text: { en: 'Play on Google Play ↗', tr: "Google Play'de Oyna ↗" },
+          disabled: true
+        }
+      },
+      {
+        id: 'sticksort',
+        title: 'Stick Sort',
+        badge: 'live',
+        badgeText: {
+          en: 'Live · Google Play',
+          tr: 'Yayında · Google Play'
         },
         thumb: 'stick_sort_thumb.png',
         gallery: ['stick_sort_mobile_1.png', 'stick_sort_mobile_2.png', 'stick_sort_mobile_3.png'],
         galleryAspect: '16 / 9',
         galleryFit: 'contain',
         desc: {
-          en: `The <strong>first game I ever published</strong> — a chill drag-and-drop sorting
-            puzzle, published solo from scratch under my own little label, <strong>Ande Games</strong>.
-            It looks simple, but I built the whole thing front to back: the gameplay and level flow,
-            a <strong>custom in-editor level generator</strong>, smooth <strong>DOTween animations</strong>,
-            plus <strong>Firebase analytics</strong>, <strong>crash reporting</strong>, and
-            <strong>AdMob ads</strong> wired in. Taking something from an empty project all the way to
-            a real store page taught me more than any tutorial ever did.`,
-          tr: `<strong>Yayınladığım ilk oyun</strong> — sürükle-bırak mantığıyla oynanan sakin bir
-            sıralama bulmacası; kendi küçük etiketim <strong>Ande Games</strong> altında, sıfırdan ve
-            tek başıma yayınladım. Basit görünüyor ama her şeyini baştan sona ben kurdum: oynanış ve
-            bölüm akışı, <strong>editör içi özel bölüm üreteci</strong>, akıcı
-            <strong>DOTween animasyonları</strong>, ayrıca <strong>Firebase analizleri</strong>,
-            <strong>çökme raporlama</strong> ve entegre <strong>AdMob reklamları</strong>. Boş bir
-            projeyi gerçek bir mağaza sayfasına taşımak bana hiçbir eğitimin öğretemeyeceği kadar çok
-            şey öğretti.`
+          en: `The <strong>first game I ever published</strong>, a chill stick-sorting puzzle you
+            play with a simple drag-and-drop, inspired by <strong>sorting algorithm simulations</strong>.
+            I took it all the way from a prototype to a finished, released product completely on my
+            own, under my own indie label <strong>Ande Games</strong>. This is the game where I
+            learned a ton: building a <strong>level editor</strong>, working with
+            <strong>DOTween</strong>, and setting up <strong>Firebase</strong> and
+            <strong>AdMob</strong> integration.`,
+          tr: `<strong>Yayınladığım ilk oyun</strong>. <strong>Sorting algorithm</strong>
+            simülasyonlarından esinlendiğim, sürükle bırak mantığıyla oynanan sakin bir çubuk sıralama
+            oyunu. Tamamen kendi başıma, kendi indie ismim <strong>Ande Games</strong> altında
+            prototipten üretim sürecine kadar getirip yayınladığım ilk oyun oldu. Bu oyunda çok şey
+            öğrendim: <strong>level editor</strong> yapmayı, <strong>DOTween</strong> kullanmayı, bir
+            de <strong>Firebase</strong> ve <strong>AdMob</strong> entegrasyonu yapmayı.`
         },
         tags: ['Unity', 'Firebase', 'AdMob', 'DOTween', 'Custom Editor Tools'],
         link: {
-          text: { en: 'Play on Google Play ↗', tr: "Google Play'de Oyna ↗" },
-          disabled: true
+          url: 'https://play.google.com/store/apps/details?id=com.andegames.sticksort',
+          text: { en: 'Play on Google Play ↗', tr: "Google Play'de Oyna ↗" }
         }
       },
       {
@@ -742,27 +778,30 @@
         title: 'Organism',
         badge: 'live',
         badgeText: {
-          en: 'Live — Magara Jam 2025',
-          tr: 'Yayında — Magara Jam 2025'
+          en: 'Live · Magara Jam 2025',
+          tr: 'Yayında · Magara Jam 2025'
         },
         thumb: 'organism_thumb.jpg',
         gallery: ['organism_ss1.png', 'organism_ss2.png'],
         galleryAspect: '16 / 9',
         desc: {
-          en: `A <strong>2D tower-defense</strong> with a twist: instead of placing towers, you
-            rotate a living, <strong>procedurally growing organism</strong> to intercept projectiles
-            and survive wave after wave of enemies. Built in just <strong>72 hours</strong> with two
-            friends for <strong>Magara Jam 2025</strong>, where it landed in the
-            <strong>Top 50 out of 500+ entries</strong> — easily one of the most intense and fun
-            things I've worked on. Above all, it's where I learned I could take an idea and actually
-            ship a finished product.`,
-          tr: `Bir tür <strong>2D kule savunması</strong>, ama farklı bir bakışla: kule yerleştirmek
-            yerine, canlı ve <strong>prosedürel olarak büyüyen bir organizmayı</strong> döndürerek
-            mermileri karşılıyor ve dalga dalga gelen düşmanlara karşı ayakta kalmaya çalışıyorsun.
-            İki arkadaşımla yalnızca <strong>72 saatte</strong>, <strong>Magara Jam 2025</strong> için
-            yaptık ve <strong>500+ yapım arasında ilk 50'ye</strong> girdi — üzerinde çalıştığım en
-            yoğun ve eğlenceli işlerden biri. Her şeyden önemlisi, bir fikri alıp gerçekten bitmiş bir
-            ürüne dönüştürebildiğimi bu etkinlikte öğrendim.`
+          en: `A <strong>2D endless tower defense</strong> I made with two friends for
+            <strong>Magara Jam 2025</strong>. The twist is that instead of building towers, you rotate
+            a living, <strong>procedurally growing organism</strong>, dodging the harmful stuff while
+            attaching the useful stuff to it, all to stay alive against the <strong>boss fights</strong>
+            that show up at set intervals. We built the whole thing in <strong>72 hours</strong> and
+            managed to land in the <strong>top 50 out of 500+ games</strong> at the jam. It's easily
+            one of the most intense and fun things I've worked on, and it's where I felt the joy of
+            actually finishing a project for the very first time.`,
+          tr: `İki arkadaşımla birlikte <strong>Magara Jam 2025</strong> için yaptığımız
+            <strong>2D endless tower defense</strong> türünde bir oyun. Farkı şu: kule dikmek yerine
+            canlı ve <strong>prosedürel büyüyen bir organizmayı</strong> döndürüyor, zararlı
+            maddelerden kaçıp yararlı maddeleri organizmaya bağlıyor ve belirli sürelerde gelen
+            <strong>boss fight</strong>'lara karşı ayakta kalmaya çalışıyorsun. Oyunun tamamını
+            <strong>72 saatte</strong> yaptık ve 500'den fazla oyunun olduğu bu jam'de
+            <strong>ilk 50 oyun arasına</strong> girmeyi başardık. Üzerinde çalıştığım en yoğun ve en
+            eğlenceli işlerden biri olduğunu rahatlıkla söyleyebilirim; ilk kez bir projeyi
+            bitirebilmenin sevincini bu süreçte yaşadım.`
         },
         tags: ['Unity', 'C#', 'Game Jam'],
         link: {
@@ -780,16 +819,21 @@
         },
         thumb: 'enterprojectname.gif',
         desc: {
-          en: `A fast <strong>3D first-person roguelite</strong> that's all about momentum. Pick a
-            character, stack up skills, and blast through endless enemy waves until a boss blocks your
-            way to the next map. The deeper systems are where the fun was for me —
-            <strong>object pooling</strong> everything so the screen can fill up with enemies without
-            a single hitch, and <strong>GPU-baked animations</strong> to keep it buttery smooth.`,
-          tr: `Tamamen tempo üzerine kurulu, hızlı bir <strong>3D birinci şahıs roguelite</strong>.
-            Bir karakter seç, yetenekleri üst üste yığ ve bir boss seni durdurana kadar sonsuz düşman
-            dalgalarını biç. Asıl eğlence benim için derindeki sistemlerdeydi — ekran tek bir takılma
-            olmadan düşmanlarla dolabilsin diye her şeyi <strong>object pooling</strong> ile yönettim
-            ve akıcılığı korumak için <strong>GPU'da pişirilmiş animasyonlar</strong> kullandım.`
+          en: `My <strong>passion project</strong>, a <strong>3D roguelite</strong> with different
+            characters and maps built through <strong>procedural generation</strong>. The name
+            "Megakill" is inspired by <strong>Megabonk</strong> and <strong>Ultrakill</strong>,
+            though it's honestly not set in stone yet. I develop it entirely on my own. It started
+            life as a prototype to help me learn Unity, but I keep coming back to it and building on it
+            whenever I get the chance. You could say this is the project where I learned to do
+            optimizations like <strong>object pooling</strong> and <strong>GPU baked animations</strong>.`,
+          tr: `<strong>Passion project</strong>'im. Farklı karakterleri ve
+            <strong>procedural generation</strong> ile oluşturulmuş haritaları olan bir
+            <strong>3D roguelite</strong>. "Megakill" ismini <strong>Megabonk</strong> ve
+            <strong>Ultrakill</strong>'den esinlenerek koydum ama açıkçası henüz kesinleşmiş değil.
+            Tamamen tek başıma geliştiriyorum. Unity öğrenmeme yardımcı olsun diye prototip olarak
+            başladım, ama sonrasında hala fırsat buldukça geliştirmeye devam ettiğim oyunum oldu.
+            <strong>Object pooling</strong> ve <strong>GPU baked animations</strong> gibi
+            optimizasyonları yapmayı bu projede öğrendim diyebilirim.`
         },
         tags: ['Unity', 'C#', 'Object Pooling', 'GPU-Baked Animations'],
         link: null
