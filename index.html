@@ -266,7 +266,7 @@
       text-transform: uppercase;
       letter-spacing: 0.04em;
       color: var(--text);
-      margin: 0.9rem 0 0.85rem;
+      margin: 0 0 0.85rem;
     }
 
     .game-card-body {
@@ -375,58 +375,6 @@
     .project-desc strong {
       color: inherit;
       font-weight: 600;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 0.9rem;
-    }
-
-    .tag {
-      font-size: 0.65rem;
-      font-weight: 500;
-      padding: 0.22rem 0.6rem;
-      letter-spacing: 0.03em;
-      border-radius: 3px;
-      border: 1px solid var(--border);
-    }
-
-    .tag-0 {
-      background: #2c1f1f;
-      color: #e3a3a3;
-      border-color: #5a3a3a;
-    }
-
-    .tag-1 {
-      background: #1c2630;
-      color: #9cc3e8;
-      border-color: #3a4a5a;
-    }
-
-    .tag-2 {
-      background: #241c30;
-      color: #c3a3e8;
-      border-color: #4a3a5a;
-    }
-
-    .tag-3 {
-      background: #1c2f24;
-      color: #9ce8b8;
-      border-color: #3a5a45;
-    }
-
-    .tag-4 {
-      background: #2f2718;
-      color: #e8c98a;
-      border-color: #5a4a2a;
-    }
-
-    .tag-5 {
-      background: #1c2b2b;
-      color: #9cdada;
-      border-color: #3a4a4a;
     }
 
     .project-link {
@@ -630,12 +578,13 @@
 
     <div class="section active" id="sec-games">
       <h1 class="section-heading" data-i18n="headingGames">Games</h1>
+      <p class="section-sub" data-i18n="gamesSub">A few things I've built so far. Some are out there, some are still cooking.</p>
       <div class="games-grid" id="games-grid"></div>
     </div>
 
     <div class="section" id="sec-contact">
       <h1 class="section-heading" data-i18n="headingContact">Contact</h1>
-      <p class="section-sub" data-i18n="contactSub">Feel free to reach out for collaborations, opportunities, or just to talk games.</p>
+      <p class="section-sub" data-i18n="contactSub">Drop me a line whenever you like, about working together, an opportunity, or just to talk about games.</p>
       <div class="contact-list">
         <a href="mailto:alper.can.karakas@hotmail.com" class="contact-row">
           <span class="contact-row-label" data-i18n="cEmail">Email</span>
@@ -676,7 +625,8 @@
         navContact: 'Contact',
         headingGames: 'Games',
         headingContact: 'Contact',
-        contactSub: 'Feel free to reach out for collaborations, opportunities, or just to talk games.',
+        gamesSub: "A few things I've built so far. Some are out there, some are still cooking.",
+        contactSub: 'Drop me a line whenever you like, about working together, an opportunity, or just to talk about games.',
         cEmail: 'Email',
         cPhone: 'Phone',
         cLocation: 'Location',
@@ -692,7 +642,8 @@
         navContact: 'İletişim',
         headingGames: 'Oyunlar',
         headingContact: 'İletişim',
-        contactSub: 'İş birlikleri, fırsatlar ya da sadece oyunlardan konuşmak için bana ulaşabilirsiniz.',
+        gamesSub: 'Şimdiye kadar yaptığım birkaç şey. Bazıları yayında, bazıları hâlâ fırında.',
+        contactSub: 'Ne zaman istersen yazabilirsin; birlikte bir şeyler yapmak, bir fırsattan bahsetmek ya da sadece oyunlardan konuşmak için.',
         cEmail: 'E-posta',
         cPhone: 'Telefon',
         cLocation: 'Konum',
@@ -712,29 +663,30 @@
         },
         thumb: 'BalloonSortIcon.png',
         gallery: [
-          'BalloonSort_876x1557_2026-06-30_18-43-06.png',
-          'BalloonSort_876x1557_2026-06-30_18-44-04.png',
-          'BalloonSort_876x1557_2026-06-30_18-46-03.png',
-          'BalloonSort_876x1557_2026-06-30_18-48-02.png'
+          'balloonsort_1_sort-colors.png',
+          'balloonsort_2_pop-balloons.png',
+          'balloonsort_3_no-time-limit.png',
+          'balloonsort_4_train-brain.png'
         ],
-        galleryAspect: '16 / 9',
+        galleryAspect: '3 / 4',
         galleryFit: 'contain',
         desc: {
-          en: `My <strong>second game</strong> under my own indie label, <strong>Ande Games</strong>.
-            It's a simple, easy-to-play balloon sorting puzzle inspired by <strong>water sort</strong>
-            style games. Honestly, the whole reason I made it was to chase down one question: could I
-            bring something a little different to all those water sort games I kept running into? I
-            went with a balloon theme because it felt like the most natural and visually pleasing way
-            to show off the drag-and-drop mechanic. Right now it's in
-            <strong>closed testing on Google Play</strong>.`,
-          tr: `İndie ismim <strong>Ande Games</strong> altındaki <strong>ikinci oyunum</strong>.
-            <strong>Water sort</strong> tarzı oyunlardan esinlendiğim, oynanması basit bir balon
-            sıralama oyunu. Açıkçası bu oyunu yapma sebebim, etrafta gördüğüm bunca su sıralama
-            oyununa bir fark katabilir miyim sorusuna cevap aramaktı. Sürükle bırak mekaniğini en
-            doğal ve görsel olarak en güzel şekilde yansıtmak için de balon temasını uygun buldum. Şu
-            anda <strong>Google Play üzerinde kapalı test aşamasında</strong>.`
+          en: `Game number two under my own little indie label, <strong>Ande Games</strong>. It's a
+            balloon sorting puzzle you can pick up and get in about three seconds, very much in the
+            spirit of those <strong>water sort</strong> games. I'll be honest with you, I started it
+            to answer one nagging question: with a hundred water sort clones already out there, could
+            I actually do something a bit different? Balloons just felt right for drag and drop,
+            they're colourful, they float, they pop, and the rest sort of fell into place. It's in
+            <strong>closed testing on Google Play</strong> right now, so it isn't quite out in the
+            wild yet.`,
+          tr: `Kendi küçük indie ismim <strong>Ande Games</strong> altındaki ikinci oyunum. Eline
+            alıp üç saniyede kaptığın bir balon sıralama oyunu, şu bildiğimiz <strong>water
+            sort</strong> oyunlarının ruhunda. Açık konuşayım, bu işe tek bir soru yüzünden başladım:
+            ortalıkta bir sürü su sıralama oyunu varken ben gerçekten biraz farklı bir şey yapabilir
+            miyim? Balonlar sürükle bırak için bire bir geldi; renkliler, uçuyorlar, patlıyorlar,
+            gerisi kendiliğinden geldi. Şu an <strong>Google Play'de kapalı test aşamasında</strong>,
+            yani daha tam anlamıyla ortalıkta değil.`
         },
-        tags: ['Unity', 'Firebase', 'AdMob', 'DOTween'],
         link: {
           text: { en: 'Play on Google Play ↗', tr: "Google Play'de Oyna ↗" },
           disabled: true
@@ -753,21 +705,21 @@
         galleryAspect: '16 / 9',
         galleryFit: 'contain',
         desc: {
-          en: `The <strong>first game I ever published</strong>, a chill stick-sorting puzzle you
-            play with a simple drag-and-drop, inspired by <strong>sorting algorithm simulations</strong>.
-            I took it all the way from a prototype to a finished, released product completely on my
-            own, under my own indie label <strong>Ande Games</strong>. This is the game where I
-            learned a ton: building a <strong>level editor</strong>, working with
-            <strong>DOTween</strong>, and setting up <strong>Firebase</strong> and
-            <strong>AdMob</strong> integration.`,
-          tr: `<strong>Yayınladığım ilk oyun</strong>. <strong>Sorting algorithm</strong>
-            simülasyonlarından esinlendiğim, sürükle bırak mantığıyla oynanan sakin bir çubuk sıralama
-            oyunu. Tamamen kendi başıma, kendi indie ismim <strong>Ande Games</strong> altında
-            prototipten üretim sürecine kadar getirip yayınladığım ilk oyun oldu. Bu oyunda çok şey
-            öğrendim: <strong>level editor</strong> yapmayı, <strong>DOTween</strong> kullanmayı, bir
-            de <strong>Firebase</strong> ve <strong>AdMob</strong> entegrasyonu yapmayı.`
+          en: `The <strong>first game I ever actually finished and put out there</strong>. It's a
+            calm little stick-sorting puzzle, all drag and drop, and the idea came straight out of
+            sitting there watching <strong>sorting algorithm</strong> visualisations for way too
+            long. I carried it from a scrappy prototype all the way to the store by myself, under
+            <strong>Ande Games</strong>. This is the one that taught me the most: I wrote my own
+            <strong>level editor</strong>, got properly comfortable with <strong>DOTween</strong>,
+            and figured out <strong>Firebase</strong> and <strong>AdMob</strong> along the way.`,
+          tr: `<strong>Baştan sona bitirip yayınladığım ilk oyun</strong>. Sürükle bırakla oynanan,
+            sakin sakin ilerleyen bir çubuk sıralama oyunu; fikir de uzun uzun <strong>sorting
+            algorithm</strong> simülasyonlarını izlerken aklıma geldi. Prototipten mağazaya kadar
+            bütün yolu kendi başıma, <strong>Ande Games</strong> adı altında yürüdüm. Bana en çok şey
+            öğreten oyun bu oldu: kendi <strong>level editor</strong>'ümü yazdım,
+            <strong>DOTween</strong>'e iyice ısındım, yol boyunca da <strong>Firebase</strong> ve
+            <strong>AdMob</strong> entegrasyonunu çözdüm.`
         },
-        tags: ['Unity', 'Firebase', 'AdMob', 'DOTween', 'Custom Editor Tools'],
         link: {
           url: 'https://play.google.com/store/apps/details?id=com.andegames.sticksort',
           text: { en: 'Play on Google Play ↗', tr: "Google Play'de Oyna ↗" }
@@ -786,24 +738,22 @@
         galleryAspect: '16 / 9',
         desc: {
           en: `A <strong>2D endless tower defense</strong> I made with two friends for
-            <strong>Magara Jam 2025</strong>. The twist is that instead of building towers, you rotate
-            a living, <strong>procedurally growing organism</strong>, dodging the harmful stuff while
-            attaching the useful stuff to it, all to stay alive against the <strong>boss fights</strong>
-            that show up at set intervals. We built the whole thing in <strong>72 hours</strong> and
-            managed to land in the <strong>top 50 out of 500+ games</strong> at the jam. It's easily
-            one of the most intense and fun things I've worked on, and it's where I felt the joy of
-            actually finishing a project for the very first time.`,
-          tr: `İki arkadaşımla birlikte <strong>Magara Jam 2025</strong> için yaptığımız
-            <strong>2D endless tower defense</strong> türünde bir oyun. Farkı şu: kule dikmek yerine
-            canlı ve <strong>prosedürel büyüyen bir organizmayı</strong> döndürüyor, zararlı
-            maddelerden kaçıp yararlı maddeleri organizmaya bağlıyor ve belirli sürelerde gelen
-            <strong>boss fight</strong>'lara karşı ayakta kalmaya çalışıyorsun. Oyunun tamamını
-            <strong>72 saatte</strong> yaptık ve 500'den fazla oyunun olduğu bu jam'de
-            <strong>ilk 50 oyun arasına</strong> girmeyi başardık. Üzerinde çalıştığım en yoğun ve en
-            eğlenceli işlerden biri olduğunu rahatlıkla söyleyebilirim; ilk kez bir projeyi
-            bitirebilmenin sevincini bu süreçte yaşadım.`
+            <strong>Magara Jam 2025</strong>. Here's the twist: instead of building towers you spin a
+            living, <strong>procedurally growing organism</strong> around, dodging the stuff that
+            hurts it and grabbing the stuff that helps, trying to hang on through the
+            <strong>boss fights</strong> that roll in every so often. We built the whole thing in
+            <strong>72 hours</strong> and somehow landed in the <strong>top 50 out of 500+
+            games</strong>. Easily the most fun I've had while being that exhausted, and the first
+            time I ever felt what it's like to really finish something.`,
+          tr: `İki arkadaşımla <strong>Magara Jam 2025</strong> için yaptığımız
+            <strong>2D endless tower defense</strong>. İşin farkı şurada: kule dikmek yerine canlı,
+            <strong>prosedürel büyüyen bir organizmayı</strong> döndürüyorsun; zararlı şeylerden
+            kaçıp işine yarayanları organizmaya yapıştırıyor, arada bir gelen <strong>boss
+            fight</strong>'lara karşı ayakta kalmaya çalışıyorsun. Hepsini <strong>72 saatte</strong>
+            yaptık ve 500'den fazla oyunun arasından <strong>ilk 50'ye</strong> girdik. O kadar
+            yorgunken bu kadar eğlendiğim başka bir iş olmadı; bir projeyi gerçekten bitirmenin nasıl
+            bir his olduğunu da ilk kez orada anladım.`
         },
-        tags: ['Unity', 'C#', 'Game Jam'],
         link: {
           url: 'https://magarajam.com/game/organism',
           text: { en: 'Play on Magara Jam ↗', tr: "Magara Jam'de Oyna ↗" }
@@ -819,23 +769,23 @@
         },
         thumb: 'enterprojectname.gif',
         desc: {
-          en: `My <strong>passion project</strong>, a <strong>3D roguelite</strong> with different
-            characters and maps built through <strong>procedural generation</strong>. The name
-            "Megakill" is inspired by <strong>Megabonk</strong> and <strong>Ultrakill</strong>,
-            though it's honestly not set in stone yet. I develop it entirely on my own. It started
-            life as a prototype to help me learn Unity, but I keep coming back to it and building on it
-            whenever I get the chance. You could say this is the project where I learned to do
-            optimizations like <strong>object pooling</strong> and <strong>GPU baked animations</strong>.`,
-          tr: `<strong>Passion project</strong>'im. Farklı karakterleri ve
-            <strong>procedural generation</strong> ile oluşturulmuş haritaları olan bir
-            <strong>3D roguelite</strong>. "Megakill" ismini <strong>Megabonk</strong> ve
-            <strong>Ultrakill</strong>'den esinlenerek koydum ama açıkçası henüz kesinleşmiş değil.
-            Tamamen tek başıma geliştiriyorum. Unity öğrenmeme yardımcı olsun diye prototip olarak
-            başladım, ama sonrasında hala fırsat buldukça geliştirmeye devam ettiğim oyunum oldu.
-            <strong>Object pooling</strong> ve <strong>GPU baked animations</strong> gibi
-            optimizasyonları yapmayı bu projede öğrendim diyebilirim.`
+          en: `This one's my <strong>passion project</strong>: a <strong>3D roguelite</strong>
+            with a handful of characters and maps built through
+            <strong>procedural generation</strong>. The name is a mash-up of
+            <strong>Megabonk</strong> and <strong>Ultrakill</strong>, and no, it's nowhere near
+            final. I build it entirely on my own. It started life as a throwaway prototype to help me
+            learn Unity, but I keep wandering back to it whenever I get a free evening. It's also
+            where I picked up the fun stuff, things like <strong>object pooling</strong> and
+            <strong>GPU baked animations</strong>.`,
+          tr: `Bu benim <strong>passion project</strong>'im: farklı karakterleri ve
+            <strong>procedural generation</strong> ile oluşturulan haritaları olan bir
+            <strong>3D roguelite</strong>. İsmi <strong>Megabonk</strong> ile
+            <strong>Ultrakill</strong> karışımı, ve hayır, kesinleşmiş olmaktan çok uzak. Tamamen tek
+            başıma geliştiriyorum. Unity öğrenmeme yardımcı olsun diye yaptığım gelip geçici bir
+            prototip olarak başlamıştı, ama boş bir akşam buldukça dönüp üstüne bir şeyler eklediğim
+            oyun hâline geldi. İşin eğlenceli kısımlarını, <strong>object pooling</strong> ve
+            <strong>GPU baked animations</strong> gibi şeyleri de burada öğrendim.`
         },
-        tags: ['Unity', 'C#', 'Object Pooling', 'GPU-Baked Animations'],
         link: null
       }
     ];
@@ -902,7 +852,6 @@
             <div class="game-card-status project-badge ${g.badge}">${g.badgeText[lang]}</div>
           </div>
           <div class="game-card-body">
-            <div class="project-tags">${g.tags.map((t, i) => `<span class="tag tag-${i % 6}">${t}</span>`).join('')}</div>
             <div class="game-card-title" lang="en">${g.title}</div>
             <p class="project-desc">${g.desc[lang]}</p>
             ${gallery}
