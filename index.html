@@ -3025,7 +3025,7 @@
       about: { icon: 'computer', title: () => t('winAbout'), w: 520, h: 520, render: renderAbout },
       contact: { icon: 'mail', title: () => t('winContact'), w: 540, h: 420, render: renderContact },
       recycle: { icon: 'bin', title: () => t('winRecycle'), w: 440, h: 300, render: renderRecycle },
-      mines: { icon: 'mine', title: () => t('winMines'), w: 300, h: 380, render: renderMines, cls: 'mineswin', mounted: msBind, opened: msFit }
+      mines: { icon: 'mine', title: () => t('winMines'), w: 300, h: 380, render: renderMines, cls: 'mineswin', mounted: msBind, opened: msFit, closed: () => msNew() }
     };
 
     const MIN_W = 300;
@@ -3202,6 +3202,7 @@
       if (!win) return;
       win.el.remove();
       wins.delete(id);
+      if (win.def.closed) win.def.closed();
       if (id === 'games' && location.hash) setHash(location.pathname + location.search);
       refocus();
     }
@@ -3356,6 +3357,8 @@
         return;
       }
       if (e.key !== 'Escape') return;
+      // Let text fields handle Escape themselves (the search box clears itself).
+      if (e.target.closest?.('input, textarea')) return;
       const menu = document.getElementById('start-menu');
       if (!menu.hidden) {
         toggleStart(false);
