@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#245edb" />
+  <meta name="theme-color" content="#182857" />
   <title>Alper Can Karakaş · Game Developer</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="preload" href="wallpaper.jpg" as="image">
+  <script>
+    try { if (localStorage.getItem('theme') === 'light') delete document.documentElement.dataset.theme; } catch (e) { }
+    document.head.insertAdjacentHTML('beforeend', `<link rel="preload" href="${document.documentElement.dataset.theme === 'dark' ? 'wallpaper-night.jpg' : 'wallpaper.jpg'}" as="image">`);
+  </script>
   <style>
     *,
     *::before,
@@ -639,32 +642,6 @@
       box-shadow: 1px 0 #fff;
     }
 
-    .x-search {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      height: 24px;
-      width: 200px;
-      padding: 0 4px 0 6px;
-      background: #fff;
-      border: 1px solid #7f9db9;
-    }
-
-    .x-search svg {
-      width: 14px;
-      height: 14px;
-      flex-shrink: 0;
-    }
-
-    .x-search input {
-      flex: 1;
-      min-width: 0;
-      border: none;
-      outline: none;
-      font-size: 12.5px;
-    }
-
     .x-address {
       display: flex;
       align-items: center;
@@ -713,145 +690,6 @@
       height: 20px;
     }
 
-    .x-main {
-      flex: 1;
-      min-height: 0;
-      display: flex;
-      background: #fff;
-    }
-
-    .x-tasks {
-      width: 210px;
-      flex-shrink: 0;
-      overflow: auto;
-      padding: 12px 10px;
-      background: linear-gradient(#7ba2e7, #6375d6);
-    }
-
-    .tp {
-      margin-bottom: 14px;
-      border-radius: 4px 4px 0 0;
-      overflow: hidden;
-      box-shadow: 0 1px 2px rgba(0, 0, 50, .2);
-    }
-
-    .tp-h {
-      display: flex;
-      align-items: center;
-      height: 25px;
-      padding: 0 11px;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--xp-link);
-      background: linear-gradient(90deg, #fff 30%, #c6d3f7);
-    }
-
-    .tp.special .tp-h {
-      color: #fff;
-      background: linear-gradient(90deg, #0c32a4 0%, #2a6ae0 100%);
-    }
-
-    .tp-list {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      padding: 9px 10px;
-      background: #d6dff7;
-      border: 1px solid #fff;
-      border-top: none;
-    }
-
-    .tp.special .tp-list {
-      background: #eff3ff;
-    }
-
-    .tp-link {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 3px 0;
-      font-size: 12px;
-      color: var(--xp-link);
-      text-align: left;
-      text-decoration: none;
-    }
-
-    .tp-link:hover {
-      color: var(--xp-link-hover);
-      text-decoration: underline;
-    }
-
-    .tp-link .mi {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-    }
-
-    .tp-link .mi img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 3px;
-      display: block;
-    }
-
-    .tp-detail {
-      font-size: 12px;
-      line-height: 1.5;
-      color: #000;
-    }
-
-    .tp-detail b {
-      display: block;
-    }
-
-    .x-content {
-      flex: 1;
-      min-width: 0;
-      overflow: auto;
-      padding: 18px 20px 24px;
-      container-type: inline-size;
-    }
-
-    .x-intro {
-      margin-bottom: 14px;
-    }
-
-    .x-intro h3 {
-      font-family: var(--title);
-      font-size: 20px;
-      color: #0c327d;
-    }
-
-    .x-intro p {
-      margin-top: 3px;
-      font-size: 13px;
-      color: var(--ink-soft);
-      line-height: 1.5;
-    }
-
-    .x-sec+.x-sec {
-      margin-top: 28px;
-    }
-
-    .x-sec-h {
-      margin-bottom: 12px;
-      padding-bottom: 5px;
-      background: linear-gradient(90deg, #7ba2e7, rgba(123, 162, 231, 0)) left bottom / 100% 1px no-repeat;
-    }
-
-    .x-sec-h h4 {
-      font-size: 13px;
-      font-weight: 700;
-      color: #0c327d;
-    }
-
-    .x-sec-h p {
-      font-size: 12px;
-      color: var(--ink-soft);
-      margin-top: 2px;
-    }
-
     .x-status {
       display: flex;
       align-items: center;
@@ -874,147 +712,448 @@
       background: linear-gradient(135deg, transparent 0 45%, #fff 45% 52%, #a6a28f 52% 60%, transparent 60% 70%, #fff 70% 76%, #a6a28f 76% 84%, transparent 84%);
     }
 
-    /* ---------- game cards ---------- */
+    /* ---------- my projects: internet explorer + video site ---------- */
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      grid-auto-flow: row dense;
-      gap: 16px;
+    button.x-tb {
+      border: 1px solid transparent;
+      border-radius: 3px;
     }
 
-    .card.wide {
-      grid-column: span 2;
+    button.x-tb:hover {
+      border-color: #c5c2b2;
+      background: rgba(255, 255, 255, .55);
     }
 
-    /* The PC section only has wide cards, so it gets a two-column grid of its own. */
-    .cards.pc {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    button.x-tb.off {
+      pointer-events: none;
     }
 
-    .cards.pc .card.wide {
-      grid-column: auto;
+    .x-status>span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
-    @container (max-width: 640px) {
-      .cards.pc {
-        grid-template-columns: minmax(0, 1fr);
-      }
+    .x-status .si {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
     }
 
-    @container (min-width: 1180px) {
-      .cards {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
+    .x-status .ie-zone {
+      margin-left: auto;
+      padding-left: 10px;
+      border-left: 1px solid #d5d2c2;
     }
 
-    @container (max-width: 640px) {
-      .cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .card.wide {
-        grid-column: 1 / -1;
-      }
+    .ie-page {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      border-top: 1px solid #7f9db9;
     }
 
-    .card {
+    .yt {
+      --yt-bg: #fff;
+      --yt-fg: #0f0f0f;
+      --yt-sub: #606060;
+      --yt-line: #e5e5e5;
+      --yt-chip: #f2f2f2;
+      --yt-field: #fff;
+      --yt-field-line: #ccc;
+      flex: 1;
+      min-width: 0;
       display: flex;
       flex-direction: column;
-      background: #fff;
-      border: 1px solid #a7b8dc;
-      border-radius: 6px;
-      overflow: hidden;
-      box-shadow: 0 2px 6px rgba(20, 50, 120, .15);
+      container: yt / inline-size;
+      background: var(--yt-bg);
+      color: var(--yt-fg);
+      font: 14px/1.4 Roboto, Arial, sans-serif;
+    }
+
+    .yt-head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      height: 56px;
+      padding: 0 16px;
+      flex-shrink: 0;
+    }
+
+    .yt-logo {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-shrink: 0;
+      font: 700 20px/1 'Arial Narrow', Arial, sans-serif;
+      letter-spacing: -.6px;
+      color: var(--yt-fg);
+    }
+
+    .yt-logo .ico {
+      width: 30px;
+      height: 21px;
+    }
+
+    .yt-search {
+      flex: 0 1 540px;
+      min-width: 0;
+      display: flex;
+      height: 36px;
+      margin: 0 auto;
+    }
+
+    .yt-search input {
+      flex: 1;
+      min-width: 0;
+      padding: 0 16px;
+      border: 1px solid var(--yt-field-line);
+      border-right: none;
+      border-radius: 18px 0 0 18px;
+      background: var(--yt-field);
+      color: var(--yt-fg);
+      font: 15px Roboto, Arial, sans-serif;
       outline: none;
-      scroll-margin-top: 12px;
-      transition: box-shadow .2s, border-color .2s;
     }
 
-    .card:hover {
-      border-color: #6f8fd8;
-      box-shadow: 0 4px 14px rgba(20, 50, 120, .25);
+    .yt-search input:focus {
+      border-color: #1c62b9;
     }
 
-    .card.flash {
-      animation: flash 1.4s ease-out;
+    .yt-search-btn {
+      display: grid;
+      place-items: center;
+      width: 60px;
+      flex-shrink: 0;
+      border: 1px solid var(--yt-field-line);
+      border-radius: 0 18px 18px 0;
+      background: var(--yt-chip);
     }
 
-    @keyframes flash {
-
-      0%,
-      40% {
-        border-color: var(--xp-select);
-        box-shadow: 0 0 0 3px var(--xp-select);
-      }
+    .yt-search-btn .ico {
+      width: 22px;
+      height: 22px;
     }
 
-    .card-shot {
+    .yt-body {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+    }
+
+    .yt-side {
+      width: 220px;
+      flex-shrink: 0;
+      overflow: auto;
+      padding: 4px 12px 12px;
+    }
+
+    .yt-nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      width: 100%;
+      height: 40px;
+      padding: 0 12px;
+      border-radius: 10px;
+      color: var(--yt-fg);
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .yt-nav:hover {
+      background: var(--yt-chip);
+    }
+
+    .yt-nav.on {
+      background: var(--yt-chip);
+      font-weight: 700;
+    }
+
+    .yt-ni {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .yt-main {
+      flex: 1;
+      min-width: 0;
+      overflow: auto;
+      padding: 12px 24px 32px 12px;
+      container: ytmain / inline-size;
+    }
+
+    .yt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 36px 16px;
+    }
+
+    .yt-thumb {
       position: relative;
       display: block;
-      overflow: hidden;
-      background: #3a7bd5 url(wallpaper.jpg) center 35% / cover no-repeat;
-      border-bottom: 1px solid #c8d3ea;
-    }
-
-    .card.phone .card-shot {
-      flex: 1;
-      min-height: 360px;
-    }
-
-    .card.wide .card-shot {
+      width: 100%;
       aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #000;
     }
 
-    .card.phone .card-shot img {
+    .yt-thumb img {
       position: absolute;
-      top: 18px;
-      left: 50%;
-      height: calc(100% - 36px);
-      width: auto;
-      transform: translateX(-50%);
-      border: 5px solid #151515;
-      border-radius: 18px;
-      background: #151515;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, .45);
-      transition: transform .25s ease;
-    }
-
-    .card.wide .card-shot img {
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      transition: transform .3s ease;
+      transition: transform .25s;
     }
 
-    .card.phone:hover .card-shot img {
-      transform: translateX(-50%) translateY(-4px);
+    .yt-thumb.tall .fg {
+      object-fit: contain;
     }
 
-    .card.wide:hover .card-shot img {
-      transform: scale(1.03);
+    .yt-thumb .bg {
+      filter: blur(16px) brightness(.55);
+      transform: scale(1.25);
     }
 
-    .card-body {
+    .yt-card:hover .yt-thumb .fg {
+      transform: scale(1.04);
+    }
+
+    .yt-badge {
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #fff;
+      background: rgba(0, 0, 0, .8);
+    }
+
+    .yt-meta {
       display: flex;
-      flex-direction: column;
-      padding: 13px 15px 15px;
+      gap: 12px;
+      margin-top: 12px;
     }
 
-    .card.wide .card-body {
-      flex: 1;
+    .yt-av {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      padding: 4px;
+      border-radius: 50%;
+      background: #000;
     }
 
-    .card-title {
+    .yt-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 8px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 22px;
+    }
+
+    .yt-title button {
+      color: inherit;
+      text-align: left;
+    }
+
+    .yt-sub {
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--yt-sub);
+    }
+
+    .yt-na {
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+      font-size: 13px;
+      color: var(--yt-sub);
+    }
+
+    .yt-na .ico {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .yt .no-match {
+      padding: 48px 0;
+      text-align: center;
+      color: var(--yt-sub);
+    }
+
+    .yt-watch {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 24px;
+    }
+
+    .yt-player {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #000;
+    }
+
+    .yt-player iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .yt-player-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(22px) brightness(.3);
+      transform: scale(1.2);
+    }
+
+    .yt-unav {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       gap: 8px;
-      font-family: var(--title);
-      font-size: 18px;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .yt-unav .ico {
+      width: 64px;
+      height: 64px;
+      opacity: .85;
+    }
+
+    .yt-unav b {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .yt-unav p {
+      max-width: 400px;
+      color: #ccc;
+    }
+
+    .yt-wtitle {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 10px;
+      margin-top: 12px;
+      font-size: 20px;
       font-weight: 700;
-      color: #0c327d;
+      line-height: 28px;
+    }
+
+    .yt-owner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .yt-owner b {
+      display: block;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .yt-owner small {
+      font-size: 12px;
+      color: var(--yt-sub);
+    }
+
+    .yt-cta,
+    .yt-dev {
+      display: inline-flex;
+      align-items: center;
+      height: 36px;
+      padding: 0 16px;
+      margin-left: 12px;
+      border-radius: 18px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .yt-cta {
+      color: var(--yt-bg);
+      background: var(--yt-fg);
+      text-decoration: none;
+    }
+
+    .yt-cta:hover {
+      opacity: .85;
+    }
+
+    .yt-dev {
+      background: var(--yt-chip);
+      color: var(--yt-sub);
+    }
+
+    .yt-desc {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 12px;
+      background: var(--yt-chip);
+    }
+
+    .yt-desc p {
+      margin-top: 4px;
+      line-height: 20px;
+    }
+
+    .yt-next h3 {
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .yt-nx {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+      margin-bottom: 8px;
+      color: inherit;
+      text-align: left;
+    }
+
+    .yt-nx .yt-thumb {
+      width: 168px;
+      flex-shrink: 0;
+      border-radius: 8px;
+    }
+
+    .yt-nx b {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+    }
+
+    .yt-nx small {
+      display: block;
+      font-size: 12px;
+      line-height: 18px;
+      color: var(--yt-sub);
     }
 
     .tag-clone {
@@ -1032,110 +1171,63 @@
       box-shadow: inset 0 1px rgba(255, 255, 255, .6);
     }
 
-    .card-type {
-      font-size: 12px;
-      color: #6b7a99;
-      margin-top: 1px;
+    @container ytmain (max-width: 840px) {
+      .yt-watch {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
-    .card-line {
-      font-size: 13.5px;
-      line-height: 1.5;
-      color: #333;
-      margin-top: 8px;
-    }
-
-    .card-foot {
-      margin-top: auto;
-      padding-top: 12px;
-    }
-
-    .card-soon {
-      display: inline-block;
-      font-size: 12.5px;
-      color: #6b7a99;
-      font-style: italic;
-    }
-
-    .xp-go-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      min-height: 34px;
-      padding: 0 16px;
-      border-radius: 4px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #fff;
-      text-decoration: none;
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, .45);
-      border: 1px solid #2b6d17;
-      background: linear-gradient(#64c94a 0%, #3ea12a 45%, #2f8a1f 55%, #3d9e2b 100%);
-      box-shadow: inset 0 1px rgba(255, 255, 255, .5);
-    }
-
-    .xp-go-btn:hover {
-      filter: brightness(1.1);
-    }
-
-    .xp-go-btn:active {
-      filter: brightness(.9);
-    }
-
-    .no-match {
-      padding: 24px 0;
-      color: var(--ink-soft);
-    }
-
-    /* Phone-width folder: keep two phone cards per row, like an app store grid. */
-    @container (max-width: 420px) {
-      .cards {
+    /* Narrow window: the sidebar turns into a row of chips. */
+    @container yt (max-width: 720px) {
+      .yt-head {
         gap: 10px;
+        padding: 0 12px;
       }
 
-      .card.phone .card-shot {
-        min-height: 290px;
+      .yt-search-btn {
+        width: 44px;
       }
 
-      .card.phone .card-shot img {
-        top: 12px;
-        height: calc(100% - 24px);
-        border-width: 4px;
-        border-radius: 14px;
+      .yt-body {
+        flex-direction: column;
       }
 
-      .card-body {
-        padding: 10px 10px 12px;
+      .yt-side {
+        width: auto;
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+        padding: 0 12px 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
       }
 
-      .card-title {
-        font-size: 15.5px;
-        gap: 5px;
+      .yt-nav .yt-ni {
+        display: none;
       }
 
-      .tag-clone {
-        height: 17px;
-        padding: 0 5px;
-        font-size: 9.5px;
+      .yt-nav {
+        width: auto;
+        height: 32px;
+        padding: 0 12px;
+        border-radius: 8px;
+        background: var(--yt-chip);
+        font-weight: 500;
       }
 
-      .card-line {
-        font-size: 12.5px;
-        line-height: 1.45;
-        margin-top: 6px;
+      .yt-nav.on {
+        background: var(--yt-fg);
+        color: var(--yt-bg);
       }
 
-      .card-foot {
-        padding-top: 10px;
+      .yt-main {
+        padding: 4px 12px 24px;
       }
+    }
 
-      .xp-go-btn {
-        width: 100%;
-        justify-content: center;
-        min-height: 36px;
-        padding: 4px 8px;
-        font-size: 12px;
-        text-align: center;
+    @container yt (max-width: 420px) {
+      .yt-logo span {
+        display: none;
       }
     }
 
@@ -1730,20 +1822,6 @@
       color: #000;
     }
 
-    .balloon ul {
-      list-style: none;
-    }
-
-    .balloon li::before {
-      content: '- ';
-    }
-
-    .bl-tip {
-      margin-top: 6px;
-      color: #6b6b4b;
-      font-size: 11.5px;
-    }
-
     .ctx {
       position: absolute;
       z-index: 100003;
@@ -1961,6 +2039,253 @@
       background: linear-gradient(#f5a27a, #e0552a 45%, #c63c13 55%, #e26a3c);
     }
 
+    /* ---------- dark theme ---------- */
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --xp-beige: #2b2d33;
+      --xp-link: #7fb0ff;
+      --xp-link-hover: #a9caff;
+      --xp-select: #3d6fc9;
+      --ink: #e4e7ec;
+      --ink-soft: #a3a9b5;
+    }
+
+    [data-theme="dark"] :focus-visible {
+      outline-color: #ccc;
+    }
+
+    [data-theme="dark"] .screen {
+      background-color: #0d1838;
+      background-image: url(wallpaper-night.jpg);
+    }
+
+    [data-theme="dark"] .win {
+      background: #1a3191;
+      box-shadow:
+        inset -1px -1px #0b1450, inset 1px 1px #1a3191,
+        inset -2px -2px #0f1e66, inset 2px 2px #3557b8,
+        inset -3px -3px #1d3a9e, inset 3px 3px #23409f,
+        4px 6px 18px rgba(0, 0, 0, .6);
+    }
+
+    [data-theme="dark"] .win:not(.active) {
+      background: #3b4252;
+      box-shadow:
+        inset -1px -1px #2e3442, inset 1px 1px #3b4252,
+        inset -2px -2px #353b4a, inset 2px 2px #4f586c,
+        inset -3px -3px #414859, inset 3px 3px #464e60,
+        2px 4px 12px rgba(0, 0, 0, .45);
+    }
+
+    [data-theme="dark"] .win-bar {
+      background: linear-gradient(#4a6cc0 0%, #23419a 8%, #213e95 40%, #2a4ba8 88%, #2a4ba8 93%, #2c4fb0 95%, #182f78 96%, #182f78 100%);
+    }
+
+    [data-theme="dark"] .win:not(.active) .win-bar {
+      background: linear-gradient(#5a6479 0%, #4a5265 8%, #485064 40%, #515a70 88%, #515a70 93%, #545d73 95%, #414859 96%, #414859 100%);
+    }
+
+    [data-theme="dark"] .win:not(.active) .win-title {
+      color: #aab3c5;
+    }
+
+    [data-theme="dark"] .wc {
+      border-color: #c9d3ea;
+      background: radial-gradient(circle at 90% 90%, #1d3f9e 0%, #2a4fae 55%, #3c62c0 70%, #7e95c9 90%, #c9d3ea 100%);
+    }
+
+    [data-theme="dark"] .wc-close {
+      background: radial-gradient(circle at 90% 90%, #a83a00 0%, #c0561f 55%, #b8663c 70%, #e0b39c 90%, #f0e0d8 100%);
+    }
+
+    /* explorer + my projects */
+
+    [data-theme="dark"] .x-toolbar,
+    [data-theme="dark"] .x-address {
+      border-bottom-color: #1a1c20;
+      box-shadow: 0 1px #3a3d45;
+    }
+
+    [data-theme="dark"] .x-tb-sep {
+      background: #1a1c20;
+      box-shadow: 1px 0 #3a3d45;
+    }
+
+    [data-theme="dark"] button.x-tb:hover {
+      border-color: #4a4d55;
+      background: rgba(255, 255, 255, .06);
+    }
+
+    [data-theme="dark"] .x-field {
+      background: #1e2026;
+      border-color: #4a5a78;
+    }
+
+    [data-theme="dark"] .x-address>span:first-child {
+      color: #9a9fa8;
+    }
+
+    [data-theme="dark"] .empty {
+      background: #1e2026;
+    }
+
+    [data-theme="dark"] .ie-page {
+      border-top-color: #1a1c20;
+    }
+
+    [data-theme="dark"] .yt {
+      --yt-bg: #0f0f0f;
+      --yt-fg: #f1f1f1;
+      --yt-sub: #aaa;
+      --yt-line: #303030;
+      --yt-chip: #272727;
+      --yt-field: #121212;
+      --yt-field-line: #303030;
+    }
+
+    [data-theme="dark"] .x-status {
+      border-top-color: #3a3d45;
+      box-shadow: 0 -1px #1a1c20;
+    }
+
+    [data-theme="dark"] .x-status .ie-zone {
+      border-left-color: #3a3d45;
+    }
+
+    [data-theme="dark"] .x-status::after {
+      background: linear-gradient(135deg, transparent 0 45%, #4a4d55 45% 52%, #1a1c20 52% 60%, transparent 60% 70%, #4a4d55 70% 76%, #1a1c20 76% 84%, transparent 84%);
+    }
+
+    /* panels */
+
+    [data-theme="dark"] .group {
+      border-color: #43464e;
+      background: rgba(255, 255, 255, .03);
+    }
+
+    [data-theme="dark"] .group-h {
+      color: #7fb0ff;
+    }
+
+    /* minesweeper menus (the board keeps its classic grey) */
+
+    [data-theme="dark"] .ms-dd,
+    [data-theme="dark"] .ctx {
+      background: #24272e;
+      border-color: #4a4d55;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, .6);
+    }
+
+    [data-theme="dark"] .ms-dd hr,
+    [data-theme="dark"] .ctx hr {
+      border-top-color: #4a4d55;
+    }
+
+    [data-theme="dark"] .ms-flagbtn {
+      background: #2b2d33;
+      border-color: #4a4d55;
+    }
+
+    [data-theme="dark"] .ms-flagbtn[aria-pressed="true"] {
+      background: #5a3c12;
+    }
+
+    /* taskbar */
+
+    [data-theme="dark"] .taskbar {
+      background: linear-gradient(#0e1530 0, #1d2c5a 3%, #23366d 6%, #283c76 10%, #22366c 12%, #1c2f62 15%, #192a5a 20%, #182857 38%, #1a2b5d 54%, #1b2e62 86%, #1a2c5e 89%, #172756 92%, #13214a 95%, #0f1a3c 98%);
+    }
+
+    [data-theme="dark"] .task {
+      background: linear-gradient(#2e4a8a, #2b4683 50%, #243c74);
+    }
+
+    [data-theme="dark"] .task.on {
+      background: linear-gradient(#16285a, #132350);
+    }
+
+    [data-theme="dark"] .tray {
+      border-left-color: #0a1c40;
+      background: linear-gradient(#0b2a55 0, #145082 8%, #124a7a 19%, #10467a 63%, #124c80 88%, #0f3d6e 97%, #0a2b55 100%);
+      box-shadow: inset 1px 0 1px #2a6fa8;
+    }
+
+    [data-theme="dark"] .lang-ind {
+      background: linear-gradient(#2f4f96, #172d66);
+      border-color: #0b1a40;
+    }
+
+    /* balloon */
+
+    [data-theme="dark"] .balloon {
+      background: #2a2c33;
+      border-color: #6a6d75;
+      box-shadow: 2px 3px 10px rgba(0, 0, 0, .6);
+      color: var(--ink);
+    }
+
+    [data-theme="dark"] .balloon::after {
+      border-top-color: #2a2c33;
+      filter: drop-shadow(1px 1px 0 #6a6d75) drop-shadow(-1px 0 0 #6a6d75);
+    }
+
+    [data-theme="dark"] .bl-x {
+      color: #aaa;
+    }
+
+    [data-theme="dark"] .bl-x:hover {
+      background: #3a3d45;
+      color: #fff;
+    }
+
+    /* start menu */
+
+    [data-theme="dark"] .start-menu {
+      background: #18264f;
+      border-color: #0c1838;
+    }
+
+    [data-theme="dark"] .sm-top {
+      background: linear-gradient(#123a7a 0%, #0f3574 20%, #143c80 47%, #1a4489 65%, #214d93 90%, #24519a 100%);
+    }
+
+    [data-theme="dark"] .sm-cols {
+      background: #1e2026;
+    }
+
+    [data-theme="dark"] .sm-right {
+      background: #262c3a;
+      border-left-color: #3a4660;
+    }
+
+    [data-theme="dark"] .sm-item {
+      color: var(--ink);
+    }
+
+    [data-theme="dark"] .sm-right .sm-item {
+      color: #c6d6f5;
+    }
+
+    [data-theme="dark"] .sm-item small {
+      color: #8e98ad;
+    }
+
+    [data-theme="dark"] .sm-item:hover,
+    [data-theme="dark"] .sm-item:focus-visible,
+    [data-theme="dark"] .sm-item:hover small,
+    [data-theme="dark"] .sm-item:focus-visible small {
+      color: #fff;
+    }
+
+    [data-theme="dark"] .sm-sep {
+      background: linear-gradient(90deg, transparent, #3c4660, transparent);
+    }
+
+    [data-theme="dark"] .sm-bottom {
+      background: linear-gradient(#24519a 0%, #1f4a90 17%, #1b4386 39%, #173c7c 62%, #133472 83%, #102d66 100%);
+    }
+
     /* ---------- responsive ---------- */
 
     /* Phones in portrait, and short landscape phones: full-screen windows, bigger touch targets. */
@@ -2015,31 +2340,16 @@
         display: none !important;
       }
 
-      .x-tasks,
-      .x-tb,
+      .ie-opt,
       .x-tb-sep,
       .x-address,
       .x-status {
         display: none;
       }
 
-      .x-toolbar {
-        height: 46px;
-      }
-
-      .x-search {
-        width: 100%;
-        height: 34px;
-        margin-left: 0;
-      }
-
       /* 16px stops iOS Safari from zooming in when the field is focused. */
-      .x-search input {
+      .yt-search input {
         font-size: 16px;
-      }
-
-      .x-content {
-        padding: 14px;
       }
 
       .start-btn {
@@ -2096,7 +2406,6 @@
 
       .screen.booting,
       .win.opening,
-      .card.flash,
       .balloon,
       .boot-bar span {
         animation: none;
@@ -2106,8 +2415,8 @@
         left: 60px;
       }
 
-      .card-shot img {
-        transition: none !important;
+      .yt-thumb img {
+        transition: none;
       }
     }
   </style>
@@ -2117,19 +2426,6 @@
 
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
-      <linearGradient id="xFolderBack" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#f3cf6b" />
-        <stop offset="1" stop-color="#d49b25" />
-      </linearGradient>
-      <linearGradient id="xFolderFront" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#fff3bf" />
-        <stop offset=".35" stop-color="#fde08a" />
-        <stop offset="1" stop-color="#f0b93c" />
-      </linearGradient>
-      <linearGradient id="xPad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#7cc0ff" />
-        <stop offset="1" stop-color="#1d5fd2" />
-      </linearGradient>
       <linearGradient id="xBeige" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0" stop-color="#fbf8ee" />
         <stop offset="1" stop-color="#c9c0a2" />
@@ -2184,6 +2480,16 @@
         <stop offset="0" stop-color="#fff070" />
         <stop offset="1" stop-color="#f1ad00" />
       </linearGradient>
+      <radialGradient id="xIe" cx=".35" cy=".3" r=".8">
+        <stop offset="0" stop-color="#b8ecff" />
+        <stop offset=".45" stop-color="#2a8cf0" />
+        <stop offset="1" stop-color="#0a3fa6" />
+      </radialGradient>
+      <linearGradient id="xIeRing" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fff2a8" />
+        <stop offset=".5" stop-color="#ffc21a" />
+        <stop offset="1" stop-color="#e07a00" />
+      </linearGradient>
       <marker id="xArrow" viewBox="0 0 6 6" refX="2" refY="3" markerWidth="2" markerHeight="2" orient="auto">
         <path d="M0 0L6 3L0 6z" fill="#2c9c3e" />
       </marker>
@@ -2192,7 +2498,7 @@
 
   <div class="screen" id="screen">
     <ul class="desktop-icons" id="desktop-icons" aria-label="Desktop">
-      <li><button class="d-icon" data-open="games"><span class="glyph" data-icon="folder"></span><span class="lbl" data-i18n="winGames">Games</span></button></li>
+      <li><button class="d-icon" data-open="projects"><span class="glyph" data-icon="ie"></span><span class="lbl" data-i18n="winProjects">My Projects</span></button></li>
       <li><button class="d-icon" data-open="about"><span class="glyph" data-icon="computer"></span><span class="lbl" data-i18n="winAbout">About Me</span></button></li>
       <li><button class="d-icon" data-open="contact"><span class="glyph" data-icon="mail"></span><span class="lbl" data-i18n="winContact">Contact</span></button></li>
       <li><button class="d-icon" data-href="https://github.com/alpercankarakas1"><span class="glyph" data-icon="github"></span><span class="lbl">GitHub</span></button></li>
@@ -2205,7 +2511,7 @@
     <div class="ctx" id="ctx" role="menu" hidden>
       <button role="menuitem" onclick="ctxRefresh()"><span></span><span data-i18n="ctxRefresh">Refresh</span></button>
       <hr>
-      <button role="menuitem" onclick="openWin('games')"><span data-icon="folder"></span><span data-i18n="winGames">Games</span></button>
+      <button role="menuitem" onclick="openWin('projects')"><span data-icon="ie"></span><span data-i18n="winProjects">My Projects</span></button>
       <button role="menuitem" onclick="openWin('mines')"><span data-icon="mine"></span><span data-i18n="winMines">Minesweeper</span></button>
       <hr>
       <button role="menuitem" onclick="openWin('about')"><span></span><span data-i18n="ctxProps">Properties</span></button>
@@ -2215,12 +2521,6 @@
       <button class="bl-x" onclick="hideBalloon()" data-i18n-title="close">×</button>
       <div class="bl-h"><span class="bl-i" data-icon="info"></span><b data-i18n="welcomeTitle">Welcome</b></div>
       <p data-i18n="welcomeBody"></p>
-      <ul>
-        <li data-i18n="welcome1"></li>
-        <li id="bl-2"></li>
-        <li data-i18n="welcome3"></li>
-      </ul>
-      <p class="bl-tip" id="bl-tip"></p>
     </div>
 
     <div class="start-menu" id="start-menu" hidden>
@@ -2228,7 +2528,7 @@
       <div class="sm-cols">
         <div class="sm-left" id="sm-left"></div>
         <div class="sm-right">
-          <button class="sm-item" onclick="openWin('games')"><span class="s-ico" data-icon="folder"></span><span data-i18n="winGames">Games</span></button>
+          <button class="sm-item" onclick="openWin('projects')"><span class="s-ico" data-icon="ie"></span><span data-i18n="winProjects">My Projects</span></button>
           <button class="sm-item" onclick="openWin('about')"><span class="s-ico" data-icon="computer"></span><span data-i18n="winAbout">About Me</span></button>
           <button class="sm-item" onclick="openWin('contact')"><span class="s-ico" data-icon="mail"></span><span data-i18n="winContact">Contact</span></button>
           <a class="sm-item" href="https://github.com/alpercankarakas1" target="_blank" rel="noopener"><span class="s-ico" data-icon="github"></span><span>GitHub</span></a>
@@ -2244,12 +2544,14 @@
       <button class="start-btn" id="start-btn" aria-haspopup="true" aria-expanded="false" aria-controls="start-menu" onclick="toggleStart()"><span class="sg" data-icon="flag"></span><span data-i18n="start">start</span></button>
       <div class="quick">
         <button class="ql" onclick="showDesktop()" data-i18n-title="showDesktop"><span data-icon="desk"></span></button>
+        <button class="ql" onclick="openWin('projects')" data-i18n-title="winProjects"><span data-icon="ie"></span></button>
         <button class="ql" onclick="openWin('mines')" data-i18n-title="winMines"><span data-icon="mine"></span></button>
       </div>
       <div class="tasks" id="tasks"></div>
       <div class="tray">
         <button class="tray-ico" id="tray-info" onclick="showBalloon()" data-i18n-title="welcomeTitle"><span data-icon="info"></span></button>
         <span class="tray-ico tray-vol" role="img" data-icon="vol" data-i18n-title="volume"></span>
+        <button class="tray-ico" id="theme-btn" onclick="setTheme(theme === 'dark' ? 'light' : 'dark')"></button>
         <button class="lang-ind" id="lang-ind" onclick="setLang(lang === 'en' ? 'tr' : 'en')">EN</button>
         <span class="clock" id="clock"></span>
       </div>
@@ -2278,9 +2580,21 @@
 
     const SPEAKER = '<path d="M3 9h4l5-4v14l-5-4H3z" fill="#e4eaf2" stroke="#3f4d5e" stroke-width="1.1" stroke-linejoin="round"/>';
 
+    // Thin outline icons for the video site inside My Projects.
+    const LINE = d => `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+
     const ICONS = {
-      // Games folder: an XP folder with a playing card, a gamepad and a star sticking out.
-      folder: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M3.5 10A2.5 2.5 0 0 1 6 7.5h11.5l3.5 4h21A2.5 2.5 0 0 1 44.5 14v24A2.5 2.5 0 0 1 42 40.5H6A2.5 2.5 0 0 1 3.5 38z" fill="url(#xFolderBack)" stroke="#a6761a" stroke-width="1.2"/><g transform="rotate(-16 15 15)"><rect x="8.5" y="3.5" width="13" height="18" rx="2" fill="#fff" stroke="#7d7d7d" stroke-width=".9"/><path d="M15 9.6c-.9-1.7-3.8-1.3-3.8.9 0 1.9 2.4 3.4 3.8 4.8 1.4-1.4 3.8-2.9 3.8-4.8 0-2.2-2.9-2.6-3.8-.9z" fill="#e2231a"/></g><path d="M24.5 4.2l1.6 3.3 3.6.5-2.6 2.5.6 3.6-3.2-1.7-3.2 1.7.6-3.6-2.6-2.5 3.6-.5z" fill="#ffd21f" stroke="#c48a00" stroke-width=".8" stroke-linejoin="round"/><g transform="rotate(10 36 14) translate(23.5 2.5) scale(.52)"><path d="M15 15h18a8.5 8.5 0 0 1 8.3 6.7l2 9.1a4.8 4.8 0 0 1-8.2 4.3L31 31H17l-4.1 4.1a4.8 4.8 0 0 1-8.2-4.3l2-9.1A8.5 8.5 0 0 1 15 15z" fill="url(#xPad)" stroke="#123f8f" stroke-width="1.8"/><path d="M15 20.5v7M11.5 24h7" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/><circle cx="31.5" cy="22" r="2.4" fill="#3cd04b"/><circle cx="35.5" cy="26" r="2.4" fill="#ff4a2b"/><circle cx="27.5" cy="26" r="2.4" fill="#ffd21f"/></g><path d="M7.6 19.5h36.1a1.7 1.7 0 0 1 1.7 2l-2.9 17a2.4 2.4 0 0 1-2.4 2H5.3a1.7 1.7 0 0 1-1.7-2l1.6-17a2.4 2.4 0 0 1 2.4-2z" fill="url(#xFolderFront)" stroke="#a6761a" stroke-width="1.2"/><path d="M8 21.3h35.5" stroke="#fffbe6" stroke-width="1.4" stroke-linecap="round"/></svg>`,
+      // Internet Explorer 6 (Windows XP): glossy blue "e" with a gold swoosh behind the top and in front of the bottom.
+      ie: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><g transform="rotate(-28 24 25)"><path d="M2 25A22 9.5 0 0 1 46 25A22 8 0 0 0 2 25z" fill="url(#xIeRing)" stroke="#a8650a" stroke-width=".5"/></g><path d="M35.49 34.64A15 15 0 1 1 38.87 27H32.26H15.74A8.26 8.26 0 0 0 30.51 30.46zM15.88 22.5A8.5 8.5 0 0 1 32.12 22.5z" fill="url(#xIe)" fill-rule="evenodd" stroke="#0b3a8f" stroke-width="1" stroke-linejoin="round"/><path d="M13 17.5A13 13 0 0 1 30 11.6A15 15 0 0 0 11.6 19.5z" fill="#fff" opacity=".55"/><g transform="rotate(-28 24 25)"><path d="M2 25A22 11 0 0 0 46 25A21 7 0 0 1 2 25z" fill="url(#xIeRing)" stroke="#a8650a" stroke-width=".5"/></g></svg>`,
+      yt: `<svg class="ico" viewBox="0 0 28 20" aria-hidden="true"><path d="M27.4 3.1A3.5 3.5 0 0 0 24.9.6C22.7 0 14 0 14 0S5.3 0 3.1.6A3.5 3.5 0 0 0 .6 3.1C0 5.3 0 10 0 10s0 4.7.6 6.9a3.5 3.5 0 0 0 2.5 2.5C5.3 20 14 20 14 20s8.7 0 10.9-.6a3.5 3.5 0 0 0 2.5-2.5C28 14.7 28 10 28 10s0-4.7-.6-6.9z" fill="#f00"/><path d="M11.2 14.3 18.4 10l-7.2-4.3z" fill="#fff"/></svg>`,
+      home: `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 11v9.5h13V11L12 5.5z" fill="#fff6dc" stroke="#8a6a3a"/><rect x="10" y="14.5" width="4" height="6" fill="#3f7fd6" stroke="#2a5aa8" stroke-width=".8"/><path d="M3 12.5 12 4.5l9 8" fill="none" stroke="#c0441c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+      refresh: `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12.5a7 7 0 1 1-2.3-5.2" fill="none" stroke="#2f9a2a" stroke-width="2.6" stroke-linecap="round"/><path d="M20.5 3.5v6.5H14z" fill="#2f9a2a"/></svg>`,
+      globe: `<svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="url(#xInfo)" stroke="#1c4fa8"/><path d="M1.5 8h13M8 1.5c-2.6 3-2.6 10 0 13M8 1.5c2.6 3 2.6 10 0 13" fill="none" stroke="#dff0ff" stroke-width=".8"/></svg>`,
+      yHome: LINE('<path d="M4 10.5 12 4l8 6.5V20h-5.5v-6h-5v6H4z"/>'),
+      yPc: LINE('<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/>'),
+      yPhone: LINE('<rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/>'),
+      ySearch: LINE('<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/>'),
+      yOff: LINE('<rect x="3" y="6.5" width="13" height="11" rx="2"/><path d="m16 10.5 5-3v9l-5-3M2.5 3.5l19 17"/>'),
       computer: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="31" y="9" width="13" height="31" rx="1.8" fill="url(#xBeige)" stroke="#857c62" stroke-width="1.1"/><rect x="33.5" y="13" width="8" height="2.2" rx=".6" fill="#a69d82"/><rect x="33.5" y="17" width="8" height="2.2" rx=".6" fill="#a69d82"/><circle cx="37.5" cy="35" r="1.5" fill="#3fbf4a"/><rect x="3" y="8" width="30" height="24" rx="2.4" fill="url(#xBeige)" stroke="#857c62" stroke-width="1.1"/><rect x="6.5" y="11.5" width="23" height="17" rx="1" fill="url(#xScreen)" stroke="#4d5d70" stroke-width=".7"/><path d="M6.5 24.5c6-4 13-4.5 23-1.5v5.5h-23z" fill="#46a933"/><path d="M6.5 11.5h23v5c-9-2.5-15 1.5-23 1z" fill="#fff" opacity=".25"/><path d="M13.5 32h9l1.5 4h-12z" fill="#c4bb9d" stroke="#857c62" stroke-width=".9"/><rect x="7" y="36" width="22" height="4" rx="1.2" fill="url(#xBeige)" stroke="#857c62" stroke-width=".9"/></svg>`,
       mail: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="3.5" y="10.5" width="41" height="28" rx="2" fill="url(#xEnv)" stroke="#4f74a3" stroke-width="1.3"/><path d="M4.5 37.5 19 24.5M43.5 37.5 29 24.5" stroke="#90a9c8" stroke-width="1.2"/><path d="M4.6 11.6 24 28l19.4-16.4" fill="url(#xFlap)" stroke="#4f74a3" stroke-width="1.3" stroke-linejoin="round"/><rect x="34" y="14" width="7" height="6" rx=".6" fill="#e0552a" opacity=".9"/></svg>`,
       bin: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M9.5 12.5h29l-3.2 28.3a2.6 2.6 0 0 1-2.6 2.3H15.3a2.6 2.6 0 0 1-2.6-2.3z" fill="url(#xBin)" stroke="#4a6a85" stroke-width="1.2"/><path d="M9.5 12.5h29l-3.2 28.3a2.6 2.6 0 0 1-2.6 2.3H15.3a2.6 2.6 0 0 1-2.6-2.3z" fill="url(#xMesh)" opacity=".55"/><ellipse cx="24" cy="12.5" rx="15" ry="4" fill="#e9f1f7" stroke="#4a6a85" stroke-width="1.2"/><ellipse cx="24" cy="12.8" rx="11.5" ry="2.4" fill="#7e98ad"/><g fill="none" stroke="#2c9c3e" stroke-width="2.4" stroke-linecap="round" marker-end="url(#xArrow)"><path d="M18.8 27.1A5.5 5.5 0 0 1 24.9 23.6"/><path d="M28.4 25.7A5.5 5.5 0 0 1 27.4 33.3"/><path d="M24.4 34.5A5.5 5.5 0 0 1 18.6 30.2"/></g></svg>`,
@@ -2290,12 +2604,14 @@
       info: `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="url(#xInfo)" stroke="#1c4fa8"/><circle cx="12" cy="7.3" r="1.6" fill="#fff"/><rect x="10.6" y="10" width="2.8" height="8" rx=".8" fill="#fff"/></svg>`,
       vol: `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${SPEAKER}<path d="M15 9a4 4 0 0 1 0 6M17.5 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>`,
       desk: `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="14" rx="1.5" fill="url(#xScreen)" stroke="#1d3f8a"/><path d="M2.5 14c6-3 12-3 19 0v3.5h-19z" fill="#46a933"/><rect x="8" y="19" width="8" height="2" rx=".5" fill="#c9d3e0"/></svg>`,
+      logo: `<svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path d="M28 10h8l15 44h-9.5l-2.9-8.5H25.4L22.5 54H13zm0 27.5h8L32 25z" fill="#fff" fill-rule="evenodd"/></svg>`,
       gamepad: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M15 15h18a8.5 8.5 0 0 1 8.3 6.7l2 9.1a4.8 4.8 0 0 1-8.2 4.3L31 31H17l-4.1 4.1a4.8 4.8 0 0 1-8.2-4.3l2-9.1A8.5 8.5 0 0 1 15 15z" fill="#fff"/><path d="M15 20.5v7M11.5 24h7" stroke="#1d5fd2" stroke-width="2.6" stroke-linecap="round"/><circle cx="31.5" cy="22" r="2.1" fill="#3cb043"/><circle cx="35.5" cy="26" r="2.1" fill="#e2452b"/></svg>`,
+      moon: `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 14.6A8 8 0 0 1 9.4 4.5a8 8 0 1 0 10.1 10.1z" fill="#ffe27a" stroke="#b8860b" stroke-width="1.1" stroke-linejoin="round"/></svg>`,
+      sun: `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1" stroke="#ffd23f" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="4.6" fill="#ffd23f" stroke="#c98a00" stroke-width="1.1"/></svg>`,
       power: `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 6.3a8 8 0 1 0 9.6 0" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><path d="M12 3v8" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg>`,
       back: `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="url(#xGreenBall)" stroke="#2a6a18"/><path d="M13.2 7.2 8.4 12l4.8 4.8M8.8 12h7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
       fwd: `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="url(#xGreenBall)" stroke="#2a6a18"/><path d="M10.8 7.2l4.8 4.8-4.8 4.8M15.2 12h-7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
       go: `<svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><rect x="1" y="1" width="18" height="18" rx="3" fill="url(#xGreenBall)" stroke="#2a6a18"/><path d="M5 10h9M10.5 6l4 4-4 4" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-      search: `<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6.5" cy="6.5" r="4.5" fill="#e8f2ff" stroke="#2b5797" stroke-width="1.6"/><path d="M10 10l4 4" stroke="#8a6a2c" stroke-width="2.2" stroke-linecap="round"/></svg>`,
       wMin: `<svg viewBox="0 0 11 11" aria-hidden="true"><rect x="1.5" y="7.5" width="6" height="2.5" fill="#fff"/></svg>`,
       wMax: `<svg viewBox="0 0 11 11" aria-hidden="true"><rect x="1.5" y="1.5" width="8" height="8" fill="none" stroke="#fff" stroke-width="1.4"/><rect x="1.5" y="1.5" width="8" height="2.4" fill="#fff"/></svg>`,
       wClose: `<svg viewBox="0 0 11 11" aria-hidden="true"><path d="M2 2l7 7M9 2L2 9" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>`,
@@ -2311,36 +2627,37 @@
         role: 'Game developer',
         eduLabel: 'Education',
         eduValue: 'B.Sc. Computer Engineering',
-        winGames: 'Games',
+        winProjects: 'My Projects',
         winAbout: 'About Me',
         winContact: 'Contact',
         winRecycle: 'Recycle Bin',
         winMines: 'Minesweeper',
-        gamesSub: "A few things I've built so far. Some are out there, some are still cooking.",
+        catAll: 'All',
         secMobile: 'Mobile',
-        secMobileSub: 'Puzzle games for phones, newest first.',
         secPc: 'PC',
-        secPcSub: 'PC and game jam projects, newest first.',
         cloneTag: 'Clone',
         contactSub: 'Drop me a line whenever you like, about working together, an opportunity, or just to talk about games.',
         aboutSub: 'Makes games, mostly in Unity.',
         aboutSection: 'Details',
         contactSection: 'Reach me',
         creditsSection: 'Credits',
-        wallpaperCredit: 'Wallpaper: <a href="https://commons.wikimedia.org/wiki/File:Green_and_Blue_Landscape,_Henley-on-Thames.jpg" target="_blank" rel="noopener">“Green and Blue Landscape, Henley-on-Thames”</a> by Scott Wylie, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a>, resized.',
+        wallpaperCredit: 'Wallpaper: <a href="https://commons.wikimedia.org/wiki/File:Green_and_Blue_Landscape,_Henley-on-Thames.jpg" target="_blank" rel="noopener">“Green and Blue Landscape, Henley-on-Thames”</a> by Scott Wylie, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a>, resized; night version recoloured.',
         cEmail: 'Email',
         cPhone: 'Phone',
-        cLocation: 'Location',
-        locationValue: 'Karabük, Turkey',
         address: 'Address',
         go: 'Go',
         back: 'Back',
-        tasks: 'Quick Links',
-        details: 'Details',
-        folderType: 'File Folder',
-        search: 'Search games',
-        noMatch: 'No games match your search.',
-        items: n => `${n} ${n === 1 ? 'object' : 'objects'}`,
+        forward: 'Forward',
+        home: 'Home',
+        done: 'Done',
+        zone: 'Internet',
+        search: 'Search',
+        noMatch: 'No projects match your search.',
+        noVideo: 'Not available to watch yet',
+        noVideoShort: 'Soon',
+        unavTitle: 'Video unavailable',
+        unavBody: "There's no gameplay video for this one yet. Check back soon!",
+        upNext: 'Up next',
         inDev: 'In development, not playable yet',
         binEmpty: 'The Recycle Bin is empty. Every prototype is still alive somewhere.',
         start: 'start',
@@ -2349,19 +2666,15 @@
         minimize: 'Minimize',
         maximize: 'Maximize',
         close: 'Close',
-        allGames: 'All Games',
+        allGames: 'All Projects',
         showDesktop: 'Show Desktop',
         volume: 'Volume',
+        themeDark: 'Switch to dark theme',
+        themeLight: 'Switch to light theme',
         bootSub: 'Game Developer',
         bootSkip: 'Click to skip',
-        welcomeTitle: 'Welcome to Portfolio XP',
-        welcomeBody: 'My game developer portfolio, built as a Windows XP desktop.',
-        welcome1: 'My games are in the Games folder',
-        welcome2: 'Double-click an icon to open it',
-        welcome2Touch: 'Tap an icon to open it',
-        welcome3: 'Or open a program from the Start menu',
-        welcomeTip: 'Tip: right-click the desktop, or try Minesweeper.',
-        welcomeTipTouch: 'Tip: try Minesweeper from the Start menu.',
+        welcomeTitle: "Welcome to Alper Can Karakaş's XP!",
+        welcomeBody: "This is my portfolio. You can see the games I've made in My Projects.",
         ctxRefresh: 'Refresh',
         ctxProps: 'Properties',
         msGame: 'Game',
@@ -2381,36 +2694,37 @@
         role: 'Oyun geliştirici',
         eduLabel: 'Eğitim',
         eduValue: 'Bilgisayar Mühendisliği',
-        winGames: 'Oyunlar',
+        winProjects: 'Projelerim',
         winAbout: 'Hakkımda',
         winContact: 'İletişim',
         winRecycle: 'Geri Dönüşüm Kutusu',
         winMines: 'Mayın Tarlası',
-        gamesSub: 'Şimdiye kadar yaptığım birkaç şey. Bazıları yayında, bazıları hâlâ fırında.',
+        catAll: 'Tümü',
         secMobile: 'Mobil',
-        secMobileSub: 'Telefon için bulmaca oyunları, en yenisi en üstte.',
         secPc: 'PC',
-        secPcSub: 'PC ve game jam projeleri, en yenisi en üstte.',
         cloneTag: 'Klon',
         contactSub: 'Ne zaman istersen yazabilirsin; birlikte bir şeyler yapmak, bir fırsattan bahsetmek ya da sadece oyunlardan konuşmak için.',
         aboutSub: 'Oyun yapıyor, çoğunlukla Unity ile.',
         aboutSection: 'Bilgiler',
         contactSection: 'Bana ulaş',
         creditsSection: 'Emeği geçenler',
-        wallpaperCredit: 'Duvar kâğıdı: Scott Wylie, <a href="https://commons.wikimedia.org/wiki/File:Green_and_Blue_Landscape,_Henley-on-Thames.jpg" target="_blank" rel="noopener">“Green and Blue Landscape, Henley-on-Thames”</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a>, yeniden boyutlandırıldı.',
+        wallpaperCredit: 'Duvar kâğıdı: Scott Wylie, <a href="https://commons.wikimedia.org/wiki/File:Green_and_Blue_Landscape,_Henley-on-Thames.jpg" target="_blank" rel="noopener">“Green and Blue Landscape, Henley-on-Thames”</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a>, yeniden boyutlandırıldı; gece versiyonu yeniden renklendirildi.',
         cEmail: 'E-posta',
         cPhone: 'Telefon',
-        cLocation: 'Konum',
-        locationValue: 'Karabük, Türkiye',
         address: 'Adres',
         go: 'Git',
         back: 'Geri',
-        tasks: 'Hızlı Bağlantılar',
-        details: 'Ayrıntılar',
-        folderType: 'Dosya Klasörü',
-        search: 'Oyunlarda ara',
-        noMatch: 'Aramana uyan oyun yok.',
-        items: n => `${n} nesne`,
+        forward: 'İleri',
+        home: 'Giriş',
+        done: 'Bitti',
+        zone: 'Internet',
+        search: 'Ara',
+        noMatch: 'Aramana uyan proje yok.',
+        noVideo: 'Şu anda izlenemiyor',
+        noVideoShort: 'Yakında',
+        unavTitle: 'Video kullanılamıyor',
+        unavBody: 'Bu oyunun henüz bir oynanış videosu yok. Yakında tekrar uğra!',
+        upNext: 'Sıradaki',
         inDev: 'Geliştirme aşamasında, henüz oynanamıyor',
         binEmpty: 'Geri Dönüşüm Kutusu boş. Her prototip bir yerlerde hâlâ yaşıyor.',
         start: 'başlat',
@@ -2419,19 +2733,15 @@
         minimize: 'Simge durumuna küçült',
         maximize: 'Ekranı kapla',
         close: 'Kapat',
-        allGames: 'Tüm Oyunlar',
+        allGames: 'Tüm Projeler',
         showDesktop: 'Masaüstünü Göster',
         volume: 'Ses',
+        themeDark: 'Koyu temaya geç',
+        themeLight: 'Açık temaya geç',
         bootSub: 'Oyun Geliştirici',
         bootSkip: 'Geçmek için tıkla',
-        welcomeTitle: "Portfolio XP'ye hoş geldin",
-        welcomeBody: 'Windows XP masaüstü olarak hazırladığım oyun geliştirici portfolyom.',
-        welcome1: 'Oyunlarım Oyunlar klasöründe',
-        welcome2: 'Bir simgeyi açmak için çift tıkla',
-        welcome2Touch: 'Bir simgeyi açmak için dokun',
-        welcome3: 'Ya da Başlat menüsünden bir program aç',
-        welcomeTip: "İpucu: masaüstüne sağ tıkla ya da Mayın Tarlası'nı dene.",
-        welcomeTipTouch: "İpucu: Başlat menüsünden Mayın Tarlası'nı dene.",
+        welcomeTitle: "Alper Can Karakaş'ın XP'sine hoş geldiniz!",
+        welcomeBody: "Burası benim portfolyom. Projelerim'den yaptığım oyunları görebilirsiniz.",
         ctxRefresh: 'Yenile',
         ctxProps: 'Özellikler',
         msGame: 'Oyun',
@@ -2448,7 +2758,8 @@
       }
     };
 
-    // Newest first. Cards are grouped by platform in the Games folder.
+    // Newest first. Shown as videos in My Projects, filtered by platform.
+    // video: paste a YouTube link (or just the video id) to make it playable; null shows "not available yet".
     const games = [
       {
         id: 'geckoout',
@@ -2463,7 +2774,8 @@
           en: 'Guide every gecko off the board through the hole of its own colour.',
           tr: 'Her kertenkeleyi kendi rengindeki delikten geçirip tahtadan çıkar.'
         },
-        link: null
+        link: null,
+        video: 'https://youtu.be/hNh1N8BuCec'
       },
       {
         id: 'blockout',
@@ -2478,7 +2790,8 @@
           en: 'Slide the blocks out of the board through the gates of the same colour.',
           tr: 'Blokları aynı renkteki kapılardan kaydırarak tahtadan çıkar.'
         },
-        link: null
+        link: null,
+        video: 'https://youtu.be/tWxe1rTJnLs'
       },
       {
         id: 'rotaterings',
@@ -2493,7 +2806,8 @@
           en: 'Rotate the linked rings until every one of them comes free.',
           tr: 'Birbirine bağlı halkaları döndürüp hepsini serbest bırak.'
         },
-        link: null
+        link: null,
+        video: 'https://youtu.be/VVZBPHTyByQ'
       },
       {
         id: 'smashfest',
@@ -2508,7 +2822,8 @@
           en: 'Fire the slingshot and bring the towers down with as few shots as you can.',
           tr: 'Sapanla atış yap ve kuleleri olabildiğince az atışla yık.'
         },
-        link: null
+        link: null,
+        video: 'https://youtu.be/F81cYZm74AQ'
       },
       {
         id: 'pixelflow',
@@ -2523,7 +2838,8 @@
           en: 'Send numbered shooters around the conveyor to clear the pixel art.',
           tr: 'Numaralı atıcıları bant üzerinde gezdirip piksel resmi temizle.'
         },
-        link: null
+        link: null,
+        video: 'https://youtu.be/PqZwvVAetMk'
       },
       {
         id: 'balloonsort',
@@ -2540,7 +2856,8 @@
         link: {
           url: 'https://play.google.com/store/apps/details?id=com.andegames.balloonsort',
           text: { en: 'Play on Google Play ↗', tr: "Google Play'de Oyna ↗" }
-        }
+        },
+        video: null
       },
       {
         id: 'sticksort',
@@ -2557,7 +2874,8 @@
         link: {
           url: 'https://play.google.com/store/apps/details?id=com.andegames.sticksort',
           text: { en: 'Play on Google Play ↗', tr: "Google Play'de Oyna ↗" }
-        }
+        },
+        video: null
       },
       {
         id: 'organism',
@@ -2573,7 +2891,8 @@
         link: {
           url: 'https://magarajam.com/game/organism',
           text: { en: 'Play on Magara Jam ↗', tr: "Magara Jam'de Oyna ↗" }
-        }
+        },
+        video: null
       },
       {
         id: 'megakill',
@@ -2586,7 +2905,8 @@
           en: 'My solo passion project: a 3D roguelite with procedurally generated maps.',
           tr: 'Tek başıma geliştirdiğim tutku projem: prosedürel haritalı bir 3D roguelite.'
         },
-        link: null
+        link: null,
+        video: null
       }
     ];
 
@@ -2596,6 +2916,7 @@
     };
 
     let lang = store.get('lang') === 'tr' ? 'tr' : 'en';
+    let theme = store.get('theme') === 'light' ? 'light' : 'dark';
     let searchQ = '';
     let lastPointer = 'mouse';
     const t = k => i18n[lang][k];
@@ -2608,120 +2929,193 @@
 
     document.addEventListener('pointerdown', e => { lastPointer = e.pointerType || 'mouse'; }, true);
 
-    /* ---------- games folder ---------- */
+    /* ---------- my projects: internet explorer + video site ---------- */
 
-    function renderCard(g) {
-      const shot = `<img src="${g.shot}" alt="${g.title} screenshot" loading="lazy">`;
-      const foot = g.link
-        ? `<a class="xp-go-btn" href="${g.link.url}" target="_blank" rel="noopener">${g.link.text[lang]}</a>`
-        : g.clone ? '' : `<span class="card-soon">${t('inDev')}</span>`;
+    // Takes a full YouTube link (watch, youtu.be, shorts, embed) or a bare video id.
+    function ytId(v) {
+      if (!v) return null;
+      const m = v.match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([\w-]{11})/);
+      return m ? m[1] : /^[\w-]{11}$/.test(v) ? v : null;
+    }
+
+    const PROJ_URL = 'https://alpercankarakas.github.io/projects';
+    const PROJ_CATS = [['all', 'catAll', 'yHome'], ['pc', 'secPc', 'yPc'], ['mobile', 'secMobile', 'yPhone']];
+    const proj = { view: { cat: 'all', watch: null }, back: [], fwd: [] };
+
+    function projReset() {
+      proj.view = { cat: 'all', watch: null };
+      proj.back = [];
+      proj.fwd = [];
+      searchQ = '';
+    }
+
+    function projNav(view) {
+      proj.back.push(proj.view);
+      proj.fwd = [];
+      proj.view = view;
+      projPaint();
+    }
+
+    function projBack() {
+      if (!proj.back.length) return;
+      proj.fwd.push(proj.view);
+      proj.view = proj.back.pop();
+      projPaint();
+    }
+
+    function projFwd() {
+      if (!proj.fwd.length) return;
+      proj.back.push(proj.view);
+      proj.view = proj.fwd.pop();
+      projPaint();
+    }
+
+    function openProjects(cat = 'all') {
+      openWin('projects');
+      if (proj.view.watch || proj.view.cat !== cat) projNav({ cat, watch: null });
+    }
+
+    function showGame(id) {
+      openWin('projects');
+      if (games.some(g => g.id === id) && proj.view.watch !== id) projNav({ cat: proj.view.cat, watch: id });
+    }
+
+    function projSearch(q) {
+      searchQ = q;
+      if (proj.view.watch) projNav({ cat: proj.view.cat, watch: null });
+      else projFilter();
+    }
+
+    const thumbImgs = g => `${g.phone ? `<img class="bg" src="${g.shot}" alt="" loading="lazy">` : ''}<img class="fg" src="${g.shot}" alt="" loading="lazy">`;
+    const cloneTag = g => (g.clone ? `<span class="tag-clone">${t('cloneTag')}</span>` : '');
+
+    function renderVideoCard(g) {
+      const vid = ytId(g.video);
       return `
-        <article class="card ${g.phone ? 'phone' : 'wide'}" id="card-${g.id}" data-game="${g.id}" tabindex="-1">
-          ${g.link
-            ? `<a class="card-shot" href="${g.link.url}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">${shot}</a>`
-            : `<div class="card-shot">${shot}</div>`}
-          <div class="card-body">
-            <h3 class="card-title"><span lang="en">${g.title}</span>${g.clone ? `<span class="tag-clone">${t('cloneTag')}</span>` : ''}</h3>
-            <p class="card-type">${g.type[lang]}</p>
-            <p class="card-line">${g.line[lang]}</p>
-            ${foot ? `<div class="card-foot">${foot}</div>` : ''}
+        <article class="yt-card" data-game="${g.id}">
+          <button class="yt-thumb${g.phone ? ' tall' : ''}" onclick="showGame('${g.id}')" aria-label="${escAttr(g.title)}">
+            ${thumbImgs(g)}
+            ${vid ? '' : `<span class="yt-badge">${t('noVideoShort')}</span>`}
+          </button>
+          <div class="yt-meta">
+            <span class="yt-av">${ICONS.logo}</span>
+            <div>
+              <h3 class="yt-title"><button onclick="showGame('${g.id}')" lang="en">${g.title}</button>${cloneTag(g)}</h3>
+              <p class="yt-sub">Alper Can Karakaş</p>
+              <p class="yt-sub">${g.type[lang]}</p>
+              ${vid ? '' : `<p class="yt-na">${ICONS.yOff}${t('noVideo')}</p>`}
+            </div>
           </div>
         </article>`;
     }
 
-    function renderSection(key, list, cls = '') {
+    function renderWatch(g) {
+      const vid = ytId(g.video);
+      const next = [...games.filter(x => x.id !== g.id && x.platform === g.platform), ...games.filter(x => x.platform !== g.platform)];
+      const action = g.link
+        ? `<a class="yt-cta" href="${g.link.url}" target="_blank" rel="noopener">${g.link.text[lang]}</a>`
+        : g.clone ? '' : `<span class="yt-dev">${t('inDev')}</span>`;
       return `
-        <section class="x-sec">
-          <div class="x-sec-h"><h4>${t(key)}</h4><p>${t(key + 'Sub')}</p></div>
-          <div class="cards ${cls}">${list.map(renderCard).join('')}</div>
-        </section>`;
+        <div class="yt-watch">
+          <div>
+            <div class="yt-player">
+              ${vid
+                ? `<iframe src="https://www.youtube-nocookie.com/embed/${vid}?autoplay=1&rel=0" title="${escAttr(g.title)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`
+                : `<img class="yt-player-bg" src="${g.shot}" alt=""><div class="yt-unav">${ICONS.yOff}<b>${t('unavTitle')}</b><p>${t('unavBody')}</p></div>`}
+            </div>
+            <h2 class="yt-wtitle"><span lang="en">${g.title}</span>${cloneTag(g)}</h2>
+            <div class="yt-owner">
+              <span class="yt-av">${ICONS.logo}</span>
+              <div><b>Alper Can Karakaş</b><small>${t('bootSub')}</small></div>
+              ${action}
+            </div>
+            <div class="yt-desc"><b>${g.type[lang]}</b><p>${g.line[lang]}</p></div>
+          </div>
+          <aside class="yt-next">
+            <h3>${t('upNext')}</h3>
+            ${next.map(x => `
+              <button class="yt-nx" onclick="showGame('${x.id}')">
+                <span class="yt-thumb${x.phone ? ' tall' : ''}">${thumbImgs(x)}</span>
+                <span><b lang="en">${x.title}</b><small>Alper Can Karakaş</small><small>${ytId(x.video) ? x.type[lang] : t('noVideo')}</small></span>
+              </button>`).join('')}
+          </aside>
+        </div>`;
     }
 
-    function renderExplorer() {
-      const links = list => list.map(g => `
-        <button class="tp-link" onclick="showGame('${g.id}')"><span class="mi"><img src="${g.thumb}" alt=""></span><span lang="en">${g.title}</span></button>`).join('');
-      const mobile = games.filter(g => g.platform === 'mobile');
-      const pc = games.filter(g => g.platform === 'pc');
+    function renderProjects() {
+      const nav = ([cat, key, ico]) => `<button class="yt-nav" data-cat="${cat}" onclick="openProjects('${cat}')"><span class="yt-ni">${ICONS[ico]}</span>${t(key)}</button>`;
       return `
         <div class="x-toolbar">
-          <span class="x-tb off" aria-hidden="true"><span class="ti">${ICONS.back}</span><span class="x-tb-text">${t('back')}</span></span>
-          <span class="x-tb off" aria-hidden="true"><span class="ti">${ICONS.fwd}</span></span>
+          <button class="x-tb" data-nav="back" onclick="projBack()"><span class="ti">${ICONS.back}</span><span class="x-tb-text">${t('back')}</span></button>
+          <button class="x-tb" data-nav="fwd" onclick="projFwd()" title="${t('forward')}" aria-label="${t('forward')}"><span class="ti">${ICONS.fwd}</span></button>
           <span class="x-tb-sep" aria-hidden="true"></span>
-          <label class="x-search"><span class="sr-only">${t('search')}</span>${ICONS.search}<input type="search" placeholder="${t('search')}" value="${escAttr(searchQ)}" oninput="filterGames(this.value)"></label>
+          <button class="x-tb ie-opt" onclick="projPaint()" title="${t('ctxRefresh')}" aria-label="${t('ctxRefresh')}"><span class="ti">${ICONS.refresh}</span></button>
+          <button class="x-tb ie-opt" onclick="openProjects()"><span class="ti">${ICONS.home}</span><span class="x-tb-text">${t('home')}</span></button>
         </div>
         <div class="x-address">
           <span>${t('address')}</span>
-          <div class="x-field"><span class="fi">${ICONS.folder}</span>C:\\Alper\\${t('winGames')}</div>
+          <div class="x-field"><span class="fi">${ICONS.ie}</span><span class="ie-url"></span></div>
           <span class="x-go" aria-hidden="true"><span class="gi">${ICONS.go}</span>${t('go')}</span>
         </div>
-        <div class="x-main">
-          <aside class="x-tasks">
-            <div class="tp special">
-              <div class="tp-h">${t('tasks')}</div>
-              <div class="tp-list">
-                <button class="tp-link" onclick="openWin('about')"><span class="mi">${ICONS.computer}</span>${t('winAbout')}</button>
-                <button class="tp-link" onclick="openWin('contact')"><span class="mi">${ICONS.mail}</span>${t('winContact')}</button>
-                <a class="tp-link" href="https://github.com/alpercankarakas1" target="_blank" rel="noopener"><span class="mi">${ICONS.github}</span>GitHub</a>
-              </div>
+        <div class="ie-page">
+          <div class="yt">
+            <header class="yt-head">
+              <button class="yt-logo" onclick="openProjects()">${ICONS.yt}<span>MyProjects</span></button>
+              <label class="yt-search"><span class="sr-only">${t('search')}</span><input type="search" placeholder="${t('search')}" value="${escAttr(searchQ)}" oninput="projSearch(this.value)"><span class="yt-search-btn">${ICONS.ySearch}</span></label>
+            </header>
+            <div class="yt-body">
+              <nav class="yt-side">
+                ${PROJ_CATS.map(nav).join('')}
+              </nav>
+              <main class="yt-main"></main>
             </div>
-            <div class="tp">
-              <div class="tp-h">${t('secMobile')}</div>
-              <div class="tp-list">${links(mobile)}</div>
-            </div>
-            <div class="tp">
-              <div class="tp-h">${t('secPc')}</div>
-              <div class="tp-list">${links(pc)}</div>
-            </div>
-            <div class="tp">
-              <div class="tp-h">${t('details')}</div>
-              <div class="tp-list tp-detail"><b>${t('winGames')}</b>${t('folderType')}</div>
-            </div>
-          </aside>
-          <div class="x-content">
-            <div class="x-intro"><h3>${t('winGames')}</h3><p>${t('gamesSub')}</p></div>
-            ${renderSection('secMobile', mobile)}
-            ${renderSection('secPc', pc, 'pc')}
-            <p class="no-match" hidden>${t('noMatch')}</p>
           </div>
         </div>
-        <div class="x-status" aria-live="polite"></div>`;
+        <div class="x-status" aria-live="polite">
+          <span><span class="si">${ICONS.ie}</span>${t('done')}</span>
+          <span class="ie-zone"><span class="si">${ICONS.globe}</span>${t('zone')}</span>
+        </div>`;
     }
 
-    function filterGames(q) {
-      searchQ = q;
-      const win = wins.get('games');
+    function projPaint() {
+      const win = wins.get('projects');
       if (!win) return;
-      const needle = q.trim().toLocaleLowerCase(lang);
+      const { el } = win;
+      const { cat, watch } = proj.view;
+      const g = watch && games.find(x => x.id === watch);
+      el.querySelector('[data-nav="back"]').classList.toggle('off', !proj.back.length);
+      el.querySelector('[data-nav="fwd"]').classList.toggle('off', !proj.fwd.length);
+      el.querySelector('.ie-url').textContent = PROJ_URL + (g ? `/watch?v=${g.id}` : cat === 'all' ? '/' : `/${cat}`);
+      el.querySelectorAll('.yt-nav[data-cat]').forEach(b => {
+        const on = !g && b.dataset.cat === cat;
+        b.classList.toggle('on', on);
+        if (on) b.setAttribute('aria-current', 'page');
+        else b.removeAttribute('aria-current');
+      });
+      const main = el.querySelector('.yt-main');
+      if (g) {
+        main.innerHTML = renderWatch(g);
+      } else {
+        const list = games.filter(x => cat === 'all' || x.platform === cat);
+        main.innerHTML = `<div class="yt-grid">${list.map(renderVideoCard).join('')}</div><p class="no-match" hidden>${t('noMatch')}</p>`;
+        projFilter();
+      }
+      main.scrollTop = 0;
+      setHash(g ? '#' + g.id : location.pathname + location.search);
+    }
+
+    function projFilter() {
+      const main = wins.get('projects')?.el.querySelector('.yt-main');
+      if (!main || proj.view.watch) return;
+      const needle = searchQ.trim().toLocaleLowerCase(lang);
       let shown = 0;
-      win.el.querySelectorAll('.card').forEach(card => {
+      main.querySelectorAll('.yt-card').forEach(card => {
         const g = games.find(x => x.id === card.dataset.game);
         const hay = [g.title, g.type[lang], g.platform, g.clone ? 'clone klon' : ''].join(' ').toLocaleLowerCase(lang);
-        const match = !needle || hay.includes(needle);
-        card.hidden = !match;
-        if (match) shown++;
+        card.hidden = !!needle && !hay.includes(needle);
+        if (!card.hidden) shown++;
       });
-      win.el.querySelectorAll('.x-sec').forEach(sec => {
-        sec.hidden = !sec.querySelector('.card:not([hidden])');
-      });
-      win.el.querySelector('.no-match').hidden = shown > 0;
-      win.el.querySelector('.x-status').textContent = t('items')(shown);
-    }
-
-    function showGame(id) {
-      openWin('games');
-      const win = wins.get('games');
-      const card = win.el.querySelector('#card-' + id);
-      if (!card) return;
-      if (card.hidden) {
-        win.el.querySelector('.x-search input').value = '';
-        filterGames('');
-      }
-      card.scrollIntoView({ block: 'start', behavior: reduceMotion ? 'auto' : 'smooth' });
-      card.classList.remove('flash');
-      void card.offsetWidth;
-      card.classList.add('flash');
-      card.focus({ preventScroll: true });
-      setHash('#' + id);
+      main.querySelector('.no-match').hidden = shown > 0;
     }
 
     /* ---------- simple windows ---------- */
@@ -2734,7 +3128,6 @@
             <span class="group-h">${t('aboutSection')}</span>
             <div class="prop"><span class="prop-k">${t('roleLabel')}</span><span class="prop-v">${t('role')}</span></div>
             <div class="prop"><span class="prop-k">${t('eduLabel')}</span><span class="prop-v">${t('eduValue')}</span></div>
-            <div class="prop"><span class="prop-k">${t('cLocation')}</span><span class="prop-v">${t('locationValue')}</span></div>
             <a class="prop" href="mailto:alper.can.karakas@hotmail.com"><span class="prop-k">${t('cEmail')}</span><span class="prop-v">alper.can.karakas@hotmail.com</span></a>
             <a class="prop" href="https://github.com/alpercankarakas1" target="_blank" rel="noopener"><span class="prop-k">GitHub</span><span class="prop-v">github.com/alpercankarakas1</span></a>
           </div>
@@ -2754,7 +3147,6 @@
             <a class="prop" href="mailto:alper.can.karakas@hotmail.com"><span class="prop-k">${t('cEmail')}</span><span class="prop-v">alper.can.karakas@hotmail.com</span></a>
             <a class="prop" href="https://github.com/alpercankarakas1" target="_blank" rel="noopener"><span class="prop-k">GitHub</span><span class="prop-v">github.com/alpercankarakas1</span></a>
             <a class="prop" href="tel:+905377215978"><span class="prop-k">${t('cPhone')}</span><span class="prop-v">+90 537 721 59 78</span></a>
-            <div class="prop"><span class="prop-k">${t('cLocation')}</span><span class="prop-v">${t('locationValue')}</span></div>
           </div>
         </div>`;
     }
@@ -3036,7 +3428,7 @@
     /* ---------- window manager ---------- */
 
     const apps = {
-      games: { icon: 'folder', title: () => t('winGames'), w: 1080, h: 740, render: renderExplorer, cls: 'explorer', mounted: () => filterGames(searchQ) },
+      projects: { icon: 'ie', title: () => `${t('winProjects')} - Internet Explorer`, w: 1240, h: 760, render: renderProjects, cls: 'explorer', mounted: projPaint, closed: projReset },
       about: { icon: 'computer', title: () => t('winAbout'), w: 520, h: 520, render: renderAbout },
       contact: { icon: 'mail', title: () => t('winContact'), w: 540, h: 420, render: renderContact },
       recycle: { icon: 'bin', title: () => t('winRecycle'), w: 440, h: 300, render: renderRecycle },
@@ -3055,7 +3447,7 @@
       const w = Math.min(def.w, vw - 24);
       const h = Math.min(def.h, vh - 24);
       let x, y;
-      if (id === 'games') {
+      if (id === 'projects') {
         x = Math.max(12, Math.min(110, vw - w - 12));
         y = Math.max(12, Math.min(24, vh - h - 12));
       } else {
@@ -3218,7 +3610,7 @@
       win.el.remove();
       wins.delete(id);
       if (win.def.closed) win.def.closed();
-      if (id === 'games' && location.hash) setHash(location.pathname + location.search);
+      if (id === 'projects' && location.hash) setHash(location.pathname + location.search);
       refocus();
     }
 
@@ -3333,7 +3725,7 @@
         '<div class="sm-sep"></div>' +
         item("openWin('mines')", ICONS.mine, t('winMines')) +
         '<div class="sm-sep"></div>' +
-        `<button class="sm-item sm-all" onclick="openWin('games')"><span>${t('allGames')}</span><span class="arrow">${ICONS.arrow}</span></button>`;
+        `<button class="sm-item sm-all" onclick="openProjects()"><span>${t('allGames')}</span><span class="arrow">${ICONS.arrow}</span></button>`;
     }
 
     function toggleStart(force) {
@@ -3399,7 +3791,7 @@
       const tail = innerWidth - right - (icon.left + icon.width / 2) - 4;
       balloonEl.style.setProperty('--tail', Math.max(10, tail) + 'px');
       clearTimeout(balloonTimer);
-      balloonTimer = setTimeout(hideBalloon, 14000);
+      balloonTimer = setTimeout(hideBalloon, 20000);
     }
 
     function hideBalloon() {
@@ -3458,7 +3850,23 @@
       addEventListener('keydown', finish);
     }
 
-    /* ---------- language, clock ---------- */
+    /* ---------- theme, language, clock ---------- */
+
+    function setTheme(th) {
+      theme = th;
+      store.set('theme', th);
+      applyTheme();
+    }
+
+    function applyTheme() {
+      if (theme === 'dark') document.documentElement.dataset.theme = 'dark';
+      else delete document.documentElement.dataset.theme;
+      document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#182857' : '#245edb';
+      const btn = document.getElementById('theme-btn');
+      btn.innerHTML = ICONS[theme === 'dark' ? 'sun' : 'moon'];
+      btn.title = t(theme === 'dark' ? 'themeLight' : 'themeDark');
+      btn.setAttribute('aria-label', btn.title);
+    }
 
     function setLang(l) {
       lang = l;
@@ -3477,12 +3885,11 @@
         el.title = t(el.dataset.i18nTitle);
         el.setAttribute('aria-label', el.title);
       });
-      document.getElementById('bl-2').textContent = t(isTouch() ? 'welcome2Touch' : 'welcome2');
-      document.getElementById('bl-tip').textContent = t(isTouch() ? 'welcomeTipTouch' : 'welcomeTip');
       const ind = document.getElementById('lang-ind');
       ind.textContent = lang.toUpperCase();
       ind.title = lang === 'en' ? 'English · Türkçe için tıkla' : 'Türkçe · Click for English';
       ind.setAttribute('aria-label', ind.title);
+      applyTheme();
       wins.forEach(fillWin);
       renderTasks();
       renderStart();
@@ -3501,8 +3908,8 @@
     applyLang();
     setInterval(tick, 15000);
 
-    openWin('games');
     const hashGame = games.find(g => '#' + g.id === location.hash);
+    openWin('projects');
     if (hashGame) showGame(hashGame.id);
 
     let booted = false;
