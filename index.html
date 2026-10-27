@@ -783,16 +783,16 @@
     .yt-logo {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       flex-shrink: 0;
-      font: 700 20px/1 'Arial Narrow', Arial, sans-serif;
+      font: 700 25px/1 'Arial Narrow', Arial, sans-serif;
       letter-spacing: -.6px;
       color: var(--yt-fg);
     }
 
     .yt-logo .ico {
-      width: 30px;
-      height: 21px;
+      width: 38px;
+      height: 27px;
     }
 
     .yt-search {
@@ -932,6 +932,26 @@
       font-weight: 500;
       color: #fff;
       background: rgba(0, 0, 0, .8);
+    }
+
+    .yt-tw {
+      position: relative;
+    }
+
+    .yt-gp {
+      display: grid;
+      place-items: center;
+      padding: 5px;
+      border-radius: 6px;
+    }
+
+    .yt-gp .ico {
+      width: 18px;
+      height: 18px;
+    }
+
+    .yt-gp:hover {
+      background: #000;
     }
 
     .yt-meta {
@@ -1154,21 +1174,6 @@
       font-size: 12px;
       line-height: 18px;
       color: var(--yt-sub);
-    }
-
-    .tag-clone {
-      display: inline-flex;
-      align-items: center;
-      height: 19px;
-      padding: 0 7px;
-      border-radius: 3px;
-      font: 700 10.5px var(--ui);
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: #5a3300;
-      border: 1px solid #c77a1a;
-      background: linear-gradient(#ffe2b8, #f9b257 55%, #f29d32);
-      box-shadow: inset 0 1px rgba(255, 255, 255, .6);
     }
 
     @container ytmain (max-width: 840px) {
@@ -2594,6 +2599,7 @@
       yPc: LINE('<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/>'),
       yPhone: LINE('<rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/>'),
       ySearch: LINE('<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/>'),
+      gplay: `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 1.8C3.2 2.1 3 2.6 3 3.2v17.6c0 .6.2 1.1.6 1.4L13.5 12z" fill="#4285f4"/><path d="M3.6 1.8 13.5 12l3.3-3.3L5.3 1.9c-.6-.4-1.3-.4-1.7-.1z" fill="#34a853"/><path d="M3.6 22.2c.4.3 1.1.3 1.7-.1l11.5-6.8-3.3-3.3z" fill="#ea4335"/><path d="m16.8 8.7 3.4 2c1 .6 1 1.6 0 2.2l-3.4 2-3.3-3.4z" fill="#fbbc04"/></svg>`,
       yOff: LINE('<rect x="3" y="6.5" width="13" height="11" rx="2"/><path d="m16 10.5 5-3v9l-5-3M2.5 3.5l19 17"/>'),
       computer: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="31" y="9" width="13" height="31" rx="1.8" fill="url(#xBeige)" stroke="#857c62" stroke-width="1.1"/><rect x="33.5" y="13" width="8" height="2.2" rx=".6" fill="#a69d82"/><rect x="33.5" y="17" width="8" height="2.2" rx=".6" fill="#a69d82"/><circle cx="37.5" cy="35" r="1.5" fill="#3fbf4a"/><rect x="3" y="8" width="30" height="24" rx="2.4" fill="url(#xBeige)" stroke="#857c62" stroke-width="1.1"/><rect x="6.5" y="11.5" width="23" height="17" rx="1" fill="url(#xScreen)" stroke="#4d5d70" stroke-width=".7"/><path d="M6.5 24.5c6-4 13-4.5 23-1.5v5.5h-23z" fill="#46a933"/><path d="M6.5 11.5h23v5c-9-2.5-15 1.5-23 1z" fill="#fff" opacity=".25"/><path d="M13.5 32h9l1.5 4h-12z" fill="#c4bb9d" stroke="#857c62" stroke-width=".9"/><rect x="7" y="36" width="22" height="4" rx="1.2" fill="url(#xBeige)" stroke="#857c62" stroke-width=".9"/></svg>`,
       mail: `<svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="3.5" y="10.5" width="41" height="28" rx="2" fill="url(#xEnv)" stroke="#4f74a3" stroke-width="1.3"/><path d="M4.5 37.5 19 24.5M43.5 37.5 29 24.5" stroke="#90a9c8" stroke-width="1.2"/><path d="M4.6 11.6 24 28l19.4-16.4" fill="url(#xFlap)" stroke="#4f74a3" stroke-width="1.3" stroke-linejoin="round"/><rect x="34" y="14" width="7" height="6" rx=".6" fill="#e0552a" opacity=".9"/></svg>`,
@@ -2635,7 +2641,6 @@
         catAll: 'All',
         secMobile: 'Mobile',
         secPc: 'PC',
-        cloneTag: 'Clone',
         contactSub: 'Drop me a line whenever you like, about working together, an opportunity, or just to talk about games.',
         aboutSub: 'Makes games, mostly in Unity.',
         aboutSection: 'Details',
@@ -2655,6 +2660,8 @@
         noMatch: 'No projects match your search.',
         noVideo: 'Not available to watch yet',
         noVideoShort: 'Soon',
+        onPlay: 'Live on Google Play',
+        onJam: 'Play on Magara Jam',
         unavTitle: 'Video unavailable',
         unavBody: "There's no gameplay video for this one yet. Check back soon!",
         upNext: 'Up next',
@@ -2702,7 +2709,6 @@
         catAll: 'Tümü',
         secMobile: 'Mobil',
         secPc: 'PC',
-        cloneTag: 'Klon',
         contactSub: 'Ne zaman istersen yazabilirsin; birlikte bir şeyler yapmak, bir fırsattan bahsetmek ya da sadece oyunlardan konuşmak için.',
         aboutSub: 'Oyun yapıyor, çoğunlukla Unity ile.',
         aboutSection: 'Bilgiler',
@@ -2722,6 +2728,8 @@
         noMatch: 'Aramana uyan proje yok.',
         noVideo: 'Şu anda izlenemiyor',
         noVideoShort: 'Yakında',
+        onPlay: "Google Play'de yayında",
+        onJam: "Magara Jam'de oyna",
         unavTitle: 'Video kullanılamıyor',
         unavBody: 'Bu oyunun henüz bir oynanış videosu yok. Yakında tekrar uğra!',
         upNext: 'Sıradaki',
@@ -2764,9 +2772,9 @@
       {
         id: 'geckoout',
         platform: 'mobile',
-        title: 'Gecko Out',
+        title: 'Gecko Out Clone',
         clone: true,
-        type: { en: 'Puzzle · Mobile', tr: 'Bulmaca · Mobil' },
+        type: { en: 'Logic puzzle · Mobile', tr: 'Mantık bulmacası · Mobil' },
         thumb: 'geckooutclone.png',
         shot: 'geckooutclone.png',
         phone: true,
@@ -2780,9 +2788,9 @@
       {
         id: 'blockout',
         platform: 'mobile',
-        title: 'Block Out',
+        title: 'Block Out Clone',
         clone: true,
-        type: { en: 'Puzzle · Mobile', tr: 'Bulmaca · Mobil' },
+        type: { en: 'Sliding block puzzle · Mobile', tr: 'Kaydırmalı blok bulmacası · Mobil' },
         thumb: 'blockoutnewclone.png',
         shot: 'blockoutnewclone.png',
         phone: true,
@@ -2796,9 +2804,9 @@
       {
         id: 'rotaterings',
         platform: 'mobile',
-        title: 'Rotate Rings',
+        title: 'Rotate Rings Clone',
         clone: true,
-        type: { en: 'Puzzle · Mobile', tr: 'Bulmaca · Mobil' },
+        type: { en: 'Rotation puzzle · Mobile', tr: 'Döndürme bulmacası · Mobil' },
         thumb: 'rotateclone.png',
         shot: 'rotateclone.png',
         phone: true,
@@ -2812,9 +2820,9 @@
       {
         id: 'smashfest',
         platform: 'mobile',
-        title: 'Smash Fest',
+        title: 'Smash Fest Clone',
         clone: true,
-        type: { en: 'Puzzle · Mobile', tr: 'Bulmaca · Mobil' },
+        type: { en: 'Physics puzzle · Mobile', tr: 'Fizik bulmacası · Mobil' },
         thumb: 'smashclone.png',
         shot: 'smashclone.png',
         phone: true,
@@ -2828,9 +2836,9 @@
       {
         id: 'pixelflow',
         platform: 'mobile',
-        title: 'Pixel Flow',
+        title: 'Pixel Flow Clone',
         clone: true,
-        type: { en: 'Puzzle · Mobile', tr: 'Bulmaca · Mobil' },
+        type: { en: 'Color match puzzle · Mobile', tr: 'Renk eşleştirme bulmacası · Mobil' },
         thumb: 'pixelflownewclone.png',
         shot: 'pixelflownewclone.png',
         phone: true,
@@ -2845,7 +2853,7 @@
         id: 'balloonsort',
         platform: 'mobile',
         title: 'Balloon Sort',
-        type: { en: 'Puzzle · Android', tr: 'Bulmaca · Android' },
+        type: { en: 'Color sort puzzle · Android', tr: 'Renk sıralama bulmacası · Android' },
         thumb: 'BalloonSortIcon.png',
         shot: 'balloonsort_1_sort-colors.png',
         phone: true,
@@ -2863,7 +2871,7 @@
         id: 'sticksort',
         platform: 'mobile',
         title: 'Stick Sort',
-        type: { en: 'Puzzle · Android', tr: 'Bulmaca · Android' },
+        type: { en: 'Color sort puzzle · Android', tr: 'Renk sıralama bulmacası · Android' },
         thumb: 'stick_sort_thumb.png',
         shot: 'stick_sort_mobile_1.png',
         phone: true,
@@ -2987,23 +2995,35 @@
     }
 
     const thumbImgs = g => `${g.phone ? `<img class="bg" src="${g.shot}" alt="" loading="lazy">` : ''}<img class="fg" src="${g.shot}" alt="" loading="lazy">`;
-    const cloneTag = g => (g.clone ? `<span class="tag-clone">${t('cloneTag')}</span>` : '');
+
+    // Released games without a video point to where they can be played instead of "not available".
+    const STORES = [['play.google.com', 'gplay', 'onPlay'], ['magarajam.com', 'globe', 'onJam']];
+    function playLink(g) {
+      if (ytId(g.video) || !g.link) return null;
+      const store = STORES.find(([host]) => g.link.url.includes(host));
+      return store ? { url: g.link.url, icon: ICONS[store[1]], text: t(store[2]) } : null;
+    }
+    const noVideoLine = g => playLink(g)?.text || t('noVideo');
 
     function renderVideoCard(g) {
       const vid = ytId(g.video);
+      const play = playLink(g);
       return `
         <article class="yt-card" data-game="${g.id}">
-          <button class="yt-thumb${g.phone ? ' tall' : ''}" onclick="showGame('${g.id}')" aria-label="${escAttr(g.title)}">
-            ${thumbImgs(g)}
-            ${vid ? '' : `<span class="yt-badge">${t('noVideoShort')}</span>`}
-          </button>
+          <div class="yt-tw">
+            <button class="yt-thumb${g.phone ? ' tall' : ''}" onclick="showGame('${g.id}')" aria-label="${escAttr(g.title)}">
+              ${thumbImgs(g)}
+              ${vid || play ? '' : `<span class="yt-badge">${t('noVideoShort')}</span>`}
+            </button>
+            ${play ? `<a class="yt-badge yt-gp" href="${play.url}" target="_blank" rel="noopener" title="${play.text}" aria-label="${play.text}">${play.icon}</a>` : ''}
+          </div>
           <div class="yt-meta">
             <span class="yt-av">${ICONS.logo}</span>
             <div>
-              <h3 class="yt-title"><button onclick="showGame('${g.id}')" lang="en">${g.title}</button>${cloneTag(g)}</h3>
+              <h3 class="yt-title"><button onclick="showGame('${g.id}')" lang="en">${g.title}</button></h3>
               <p class="yt-sub">Alper Can Karakaş</p>
               <p class="yt-sub">${g.type[lang]}</p>
-              ${vid ? '' : `<p class="yt-na">${ICONS.yOff}${t('noVideo')}</p>`}
+              ${vid ? '' : `<p class="yt-na">${play ? play.icon : ICONS.yOff}${noVideoLine(g)}</p>`}
             </div>
           </div>
         </article>`;
@@ -3011,7 +3031,9 @@
 
     function renderWatch(g) {
       const vid = ytId(g.video);
-      const next = [...games.filter(x => x.id !== g.id && x.platform === g.platform), ...games.filter(x => x.platform !== g.platform)];
+      // Up next only lists games that actually have a video to watch.
+      const watchable = games.filter(x => x.id !== g.id && ytId(x.video));
+      const next = [...watchable.filter(x => x.platform === g.platform), ...watchable.filter(x => x.platform !== g.platform)];
       const action = g.link
         ? `<a class="yt-cta" href="${g.link.url}" target="_blank" rel="noopener">${g.link.text[lang]}</a>`
         : g.clone ? '' : `<span class="yt-dev">${t('inDev')}</span>`;
@@ -3023,7 +3045,7 @@
                 ? `<iframe src="https://www.youtube-nocookie.com/embed/${vid}?autoplay=1&rel=0" title="${escAttr(g.title)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`
                 : `<img class="yt-player-bg" src="${g.shot}" alt=""><div class="yt-unav">${ICONS.yOff}<b>${t('unavTitle')}</b><p>${t('unavBody')}</p></div>`}
             </div>
-            <h2 class="yt-wtitle"><span lang="en">${g.title}</span>${cloneTag(g)}</h2>
+            <h2 class="yt-wtitle"><span lang="en">${g.title}</span></h2>
             <div class="yt-owner">
               <span class="yt-av">${ICONS.logo}</span>
               <div><b>Alper Can Karakaş</b><small>${t('bootSub')}</small></div>
@@ -3036,7 +3058,7 @@
             ${next.map(x => `
               <button class="yt-nx" onclick="showGame('${x.id}')">
                 <span class="yt-thumb${x.phone ? ' tall' : ''}">${thumbImgs(x)}</span>
-                <span><b lang="en">${x.title}</b><small>Alper Can Karakaş</small><small>${ytId(x.video) ? x.type[lang] : t('noVideo')}</small></span>
+                <span><b lang="en">${x.title}</b><small>Alper Can Karakaş</small><small>${x.type[lang]}</small></span>
               </button>`).join('')}
           </aside>
         </div>`;
